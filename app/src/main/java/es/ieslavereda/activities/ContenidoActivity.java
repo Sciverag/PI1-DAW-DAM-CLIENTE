@@ -14,7 +14,11 @@ import es.ieslavereda.base.BaseActivity;
 import es.ieslavereda.activities.model.RecycleView;
 import es.ieslavereda.base.CallInterface;
 
-
+/**
+ * @author
+ * @since 2024-05-13
+ * Actividad que muestra el contenido de la BBDD y la información del usuario
+ */
 public class ContenidoActivity extends BaseActivity implements CallInterface, View.OnClickListener {
 
     private RecyclerView contenido;

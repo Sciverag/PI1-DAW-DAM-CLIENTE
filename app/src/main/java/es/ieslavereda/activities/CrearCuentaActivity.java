@@ -7,7 +7,11 @@ import es.ieslavereda.MiraVereda.R;
 
 import es.ieslavereda.base.BaseActivity;
 
-
+/**
+ * @author
+ * @since 2024-05-13
+ * Actividad para crear una nueva cuenta de usuario.
+ */
 public class CrearCuentaActivity extends BaseActivity {
 
     @Override

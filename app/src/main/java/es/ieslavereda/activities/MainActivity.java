@@ -2,6 +2,7 @@ package es.ieslavereda.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,6 +15,11 @@ import es.ieslavereda.activities.model.Root;
 import es.ieslavereda.base.BaseActivity;
 
 
+/**
+ * @author
+ * @since 2024-05-13
+ * Actividad principal con 3 opciones, iniciar sesión, crear cuenta, y reiniciar contraseña.
+ */
 public class MainActivity extends BaseActivity {
 
     private EditText usuario, contrasenya;
@@ -34,7 +40,12 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    public void CrearCuenta() {
+    /**
+     * Inicia una nueva actividad para crear una cuenta y
+     * muestra un mensaje sobre si la cuenta ha sido creada correctamente o no
+     */
+
+    public void CrearCuenta(View view) {
         Intent intent = new Intent(this, CrearCuentaActivity.class);
         ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
                     if (result.getResultCode() == RESULT_OK) {
@@ -47,7 +58,11 @@ public class MainActivity extends BaseActivity {
         resultLauncher.launch(intent);
     }
 
-    public void IniciarSesion() {
+    /**
+     * Usa las credenciales introducidas en la primera actividad para iniciar sesión.
+     * Si el usuario no existe o se introduce una contraseña incorrecta se mostrará un mensaje indicandolo.
+     */
+    public void IniciarSesion(View view) {
 //        if (llamadaAPI()==1) {
 //            Intent intent = new Intent(this, ContenidoActivity.class);
 //            startActivity(intent);
@@ -58,7 +73,10 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    public void ReiniciarContrasenya() {
+    /**
+     * Inicia una actividad para cambiar la contraseña del usuario introducido si existe.
+     */
+    public void ReiniciarContrasenya(View view) {
         Intent intent = new Intent(this, ReiniciarContrasenyaActivity.class);
         // intent.putExtra("Usuario", nombreUsuario);
         // intent.putExtra("Contraseña", contraseña);

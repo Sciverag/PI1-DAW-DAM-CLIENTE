@@ -15,7 +15,11 @@ import es.ieslavereda.MiraVereda.R;
 import es.ieslavereda.base.ImageDownloader;
 import es.ieslavereda.base.Parameters;
 
-
+/**
+ * @author
+ * @since 2024-05-13
+ * Base del RecyclerView para el listado del contenido a mostrar
+ */
 public class RecycleView extends RecyclerView.Adapter<RecycleView.ViewHolder> {
 
     private LayoutInflater layoutInflater;
