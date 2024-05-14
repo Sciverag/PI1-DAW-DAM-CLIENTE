@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBE8D9">
+
+    <EditText
+        android:id="@+id/editTextCrearUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="Usuario"
+        android:inputType="text"
+        android:textColor="#000000"
+        android:textColorHint="#999797"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextCrearContrasenya"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/editTextCrearContrasenya"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColor="#000000"
+        android:textColorHint="#999797"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextContrasenyaConfirmacion"
+        app:layout_constraintEnd_toEndOf="@+id/editTextCrearUsuario"
+        app:layout_constraintStart_toStartOf="@+id/editTextCrearUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCrearUsuario" />
+
+    <EditText
+        android:id="@+id/editTextContrasenyaConfirmacion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="Confirmar Contraseña"
+        android:inputType="numberPassword"
+        android:textColor="#000000"
+        android:textColorHint="#999797"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConfirmarNuevaCuenta"
+        app:layout_constraintEnd_toEndOf="@+id/editTextCrearContrasenya"
+        app:layout_constraintStart_toStartOf="@+id/editTextCrearContrasenya"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCrearContrasenya" />
+
+    <Button
+        android:id="@+id/buttonConfirmarNuevaCuenta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#FB7D39"
+        android:text="Crear Cuenta"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextContrasenyaConfirmacion"
+        app:layout_constraintStart_toStartOf="@+id/editTextContrasenyaConfirmacion"
+        app:layout_constraintTop_toBottomOf="@+id/editTextContrasenyaConfirmacion"
+        app:shapeAppearance="@style/CardView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
