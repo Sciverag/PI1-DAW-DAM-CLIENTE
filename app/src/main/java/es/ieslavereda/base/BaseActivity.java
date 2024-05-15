@@ -35,6 +35,7 @@ public class BaseActivity extends AppCompatActivity {
         });
     }
 
+
     public void showProgress(){
         progressBar.show();
     }

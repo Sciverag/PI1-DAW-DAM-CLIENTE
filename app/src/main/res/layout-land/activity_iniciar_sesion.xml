@@ -9,7 +9,7 @@
 
     <EditText
         android:id="@+id/editTextUsuario"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/white"
@@ -20,18 +20,17 @@
         android:textColorHint="#999797"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextContrasenya"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintVertical_bias="0.128"
+        app:layout_constraintVertical_chainStyle="spread" />
 
     <EditText
         android:id="@+id/editTextContrasenya"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Contraseña"
@@ -49,54 +48,70 @@
         android:id="@+id/buttonIniciarSesion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/gray"
         android:onClick="IniciarSesion"
         android:text="Iniciar sesión"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCrearCuenta"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReiniciarContrasenya"
         app:layout_constraintEnd_toEndOf="@+id/editTextContrasenya"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/editTextContrasenya"
         app:layout_constraintTop_toBottomOf="@+id/editTextContrasenya"
-        app:shapeAppearance="@style/CardView" />
+        app:shapeAppearance="@style/CardView" /><![CDATA[
 
+
+    />
+
+    ]]>
 
     <Button
         android:id="@+id/buttonCrearCuenta"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTint="@color/gray"
         android:onClick="CrearCuenta"
         android:text="Crear cuenta"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonReiniciarContrasenya"
-        app:layout_constraintEnd_toEndOf="@+id/buttonIniciarSesion"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonReiniciarContrasenya"
+        app:layout_constraintEnd_toStartOf="@+id/buttonReiniciarContrasenya"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/buttonIniciarSesion"
-        app:layout_constraintTop_toBottomOf="@+id/buttonIniciarSesion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonReiniciarContrasenya"
         app:shapeAppearance="@style/CardView" />
-    />
 
     <Button
         android:id="@+id/buttonReiniciarContrasenya"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:backgroundTint="@color/gray"
         android:onClick="ReiniciarContrasenya"
         android:text="He olvidado mi contraseña"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/buttonCrearCuenta"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/buttonCrearCuenta"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCrearCuenta"
+        app:layout_constraintStart_toEndOf="@+id/buttonCrearCuenta"
+        app:layout_constraintTop_toBottomOf="@+id/buttonIniciarSesion"
         app:shapeAppearance="@style/CardView" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="187dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
 </androidx.constraintlayout.widget.ConstraintLayout>

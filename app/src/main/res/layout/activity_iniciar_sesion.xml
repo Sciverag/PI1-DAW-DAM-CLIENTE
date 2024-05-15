@@ -7,47 +7,86 @@
     android:background="#FBE8D9"
     android:backgroundTint="@color/background">
 
-    <EditText
-        android:id="@+id/editTextUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="Nombre de usuario"
-        android:inputType="text"
-        android:textColor="@color/white"
-        android:textColorHint="#999797"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextContrasenya"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <EditText
-        android:id="@+id/editTextContrasenya"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutUsuario"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:textColor="@color/white"
-        android:textColorHint="#999797"
-        android:textSize="24sp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:counterTextColor="@color/white"
+        app:helperTextTextColor="@color/white"
+        app:hintTextColor="@color/gray"
+        app:layout_constraintBottom_toTopOf="@+id/layoutContrasenya"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:placeholderTextColor="@color/white"
+        app:prefixTextColor="@color/white"
+        app:suffixTextColor="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/icono_usuario_blanco"
+            android:hint="Nombre de usuario"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutContrasenya"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:counterTextColor="@color/white"
+        app:helperTextTextColor="@color/white"
+        app:hintTextColor="@color/gray"
         app:layout_constraintBottom_toTopOf="@+id/buttonIniciarSesion"
-        app:layout_constraintEnd_toEndOf="@+id/editTextUsuario"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/editTextUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUsuario" />
+        app:layout_constraintEnd_toEndOf="@+id/layoutUsuario"
+        app:layout_constraintStart_toStartOf="@+id/layoutUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/layoutUsuario"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:placeholderTextColor="@color/white"
+        app:prefixTextColor="@color/white"
+        app:suffixTextColor="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextContrasenya"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/icono_contrasenya_blanco"
+            android:hint="Contraseña"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <EditText-->
+<!--        android:id="@+id/editTextContrasenya"-->
+<!--        android:layout_width="363dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:backgroundTint="@color/white"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Contraseña"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textColorHint="#999797"-->
+<!--        android:textSize="24sp"-->
+<!--         />-->
 
     <Button
         android:id="@+id/buttonIniciarSesion"
-        android:layout_width="0dp"
+        android:layout_width="363dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -57,27 +96,24 @@
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonCrearCuenta"
-        app:layout_constraintEnd_toEndOf="@+id/editTextContrasenya"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/editTextContrasenya"
-        app:layout_constraintTop_toBottomOf="@+id/editTextContrasenya"
+        app:layout_constraintEnd_toEndOf="@+id/layoutContrasenya"
+        app:layout_constraintStart_toStartOf="@+id/layoutContrasenya"
+        app:layout_constraintTop_toBottomOf="@+id/layoutContrasenya"
         app:shapeAppearance="@style/CardView" />
 
 
     <Button
         android:id="@+id/buttonCrearCuenta"
-        android:layout_width="0dp"
+        android:layout_width="363dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/gray"
-        android:onClick="CrearCuenta"
         android:text="Crear cuenta"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonReiniciarContrasenya"
         app:layout_constraintEnd_toEndOf="@+id/buttonIniciarSesion"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/buttonIniciarSesion"
         app:layout_constraintTop_toBottomOf="@+id/buttonIniciarSesion"
         app:shapeAppearance="@style/CardView" />
@@ -85,7 +121,7 @@
 
     <Button
         android:id="@+id/buttonReiniciarContrasenya"
-        android:layout_width="0dp"
+        android:layout_width="363dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/gray"
@@ -95,8 +131,8 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/buttonCrearCuenta"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/buttonCrearCuenta"
         app:layout_constraintTop_toBottomOf="@+id/buttonCrearCuenta"
         app:shapeAppearance="@style/CardView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

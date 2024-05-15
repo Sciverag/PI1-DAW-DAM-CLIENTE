@@ -10,10 +10,16 @@ import java.util.ArrayList;
 
 public class Root implements Serializable {
 
-    public ArrayList<Contenido> list;
+    public ArrayList<Usuario> list;
     public Usuario usuario;
 
 
+    public ArrayList<Usuario> getList() {
+        return list;
+    }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
 }
 
