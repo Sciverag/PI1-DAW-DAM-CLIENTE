@@ -40,11 +40,11 @@ public class MainActivity extends BaseActivity {
 
     }
 
+
     /**
      * Inicia una nueva actividad para crear una cuenta y
      * muestra un mensaje sobre si la cuenta ha sido creada correctamente o no
      */
-
     public void CrearCuenta(View view) {
         Intent intent = new Intent(this, CrearCuentaActivity.class);
         ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {

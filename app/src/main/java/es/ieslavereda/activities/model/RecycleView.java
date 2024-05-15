@@ -49,7 +49,8 @@ public class RecycleView extends RecyclerView.Adapter<RecycleView.ViewHolder> {
         ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + contenido.imagen + Parameters.ICON_URL_POST, holder.imagen);
         holder.titulo.setText(contenido.titulo);
         holder.valoracion.setText(contenido.puntuacioMedia+"★");
-        holder.descripcion.setText(contenido.descripcion);
+        holder.anyo.setText(contenido.descripcion);
+
     }
 
     @Override
@@ -59,13 +60,13 @@ public class RecycleView extends RecyclerView.Adapter<RecycleView.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private ImageView imagen;
-        private TextView titulo, valoracion, descripcion;
+        private TextView titulo, valoracion, anyo;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imagen = itemView.findViewById(R.id.imagenPelicula);
             titulo = itemView.findViewById(R.id.textViewNombrePelicula);
             valoracion = itemView.findViewById(R.id.textViewPuntuacionPelicula);
-            descripcion = itemView.findViewById(R.id.textViewDescripcionPelicula);
+            anyo = itemView.findViewById(R.id.textViewAnyo);
         }
     }
 
