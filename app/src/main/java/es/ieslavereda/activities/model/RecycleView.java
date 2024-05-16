@@ -42,10 +42,10 @@ public class RecycleView extends RecyclerView.Adapter<RecycleView.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Contenido contenido = root.list.get(position);
-        ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + contenido.imagen + Parameters.ICON_URL_POST, holder.imagen);
-        holder.titulo.setText(contenido.titulo);
-        holder.valoracion.setText(contenido.puntuacioMedia+"★");
-        holder.descripcion.setText(contenido.descripcion);
+        ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + contenido.getURL_image() + Parameters.ICON_URL_POST, holder.imagen);
+        holder.titulo.setText(contenido.getTitulo());
+        holder.valoracion.setText(contenido.getPuntMedia()+"★");
+        holder.descripcion.setText(contenido.getDescripcion());
     }
 
     @Override
