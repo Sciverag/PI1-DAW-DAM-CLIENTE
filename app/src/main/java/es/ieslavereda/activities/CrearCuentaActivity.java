@@ -39,7 +39,7 @@ public class CrearCuentaActivity extends BaseActivity {
         crearCuenta = findViewById(R.id.buttonConfirmarNuevaCuenta);
 
         usuarios = getIntent().getExtras().getParcelable("Usuarios");
-
+        
 
         crearCuenta.setOnClickListener(view -> {
             if (usuarios.contains(nombre.getText().toString())) {
