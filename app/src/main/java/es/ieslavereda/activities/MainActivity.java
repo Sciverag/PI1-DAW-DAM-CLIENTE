@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import es.ieslavereda.API.Connector;
 import es.ieslavereda.MiraVereda.R;
@@ -32,6 +33,8 @@ public class MainActivity extends BaseActivity implements CallInterface {
     private Button iniciarSesion, crearCuenta, reiniciarContrasenya;
     private Root root;
     private ArrayList<Usuario> usuarios;
+    private String autenticar;
+    private Usuario usuarioGuardado;
     
     
     @Override
@@ -62,17 +65,38 @@ public class MainActivity extends BaseActivity implements CallInterface {
             intent.putExtra("Usuarios", usuarios);
             resultLauncher.launch(intent);
         });
+
+        iniciarSesion.setOnClickListener(view -> {
+            executeCall(new CallInterface() {
+                @Override
+                public void doInBackground() {
+                    usuarioGuardado = Connector.getConector().get(Usuario.class, "usuario/login/&user="+usuario.getText().toString()+"&password="+contrasenya.getText().toString());
+                }
+
+                @Override
+                public void doInUI() {
+
+                }
+            });
+            if (usuarioGuardado!=null) {
+                Intent intent = new Intent(this, ContenidoActivity.class);
+                startActivity(intent);
+                Toast.makeText(this, "Sesión iniciada como '" + usuario.getText() + "'", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
     public void doInBackground() {
-        root = Connector.getConector().get(Root.class, Parameters.URL+"/usuario/");
-        usuarios = new ArrayList<>(root.getList());
     }
+
 
     @Override
     public void doInUI() {
-        hideProgress();
+//        hideProgress();
 //        txtView.setText(root.list.get(0).weather.get(0).description);
 //        ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + root.list.get(0).weather.get(0).icon + Parameters.ICON_URL_POST, imageView);
 //
@@ -88,21 +112,6 @@ public class MainActivity extends BaseActivity implements CallInterface {
      * Usa las credenciales introducidas en la primera actividad para iniciar sesión.
      * Si el usuario no existe o se introduce una contraseña incorrecta se mostrará un mensaje indicandolo.
      */
-    public void IniciarSesion(View view) {
-        Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
-        if (usuarios.contains(usuario.getText().toString())) {
-//            if (usuarios.(usuario.getText().toString())) {
-//
-//
-//            }
-            Intent intent = new Intent(this, ContenidoActivity.class);
-            startActivity(intent);
-            Toast.makeText(this, "Sesión iniciada como '" + usuario.getText() + "'", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
-        }
-
-    }
 
     /**
      * Inicia una actividad para cambiar la contraseña del usuario introducido si existe.

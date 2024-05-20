@@ -4,61 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FBE8D9"
+    android:background="@color/background"
     android:backgroundTint="@color/background">
 
-    <EditText
-        android:id="@+id/editTextUsuario"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="Nombre de usuario"
-        android:inputType="text"
-        android:textColor="@color/white"
-        android:textColorHint="#999797"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextContrasenya"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutUsuario"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="363dp"
+        android:layout_height="60dp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:counterTextColor="@color/white"
+        app:helperTextTextColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/layoutContrasenya"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.128"
-        app:layout_constraintVertical_chainStyle="spread" />
+        app:placeholderTextColor="@color/white"
+        app:prefixTextColor="@color/white"
+        app:suffixTextColor="@color/white"
+        tools:layout_editor_absoluteX="184dp">
 
-    <EditText
-        android:id="@+id/editTextContrasenya"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="textPassword"
-        android:textColor="@color/white"
-        android:textColorHint="#999797"
-        android:textSize="24sp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/icono_usuario_blanco"
+            android:hint="Nombre de usuario"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutContrasenya"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="363dp"
+        android:layout_height="60dp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:counterTextColor="@color/white"
+        app:helperTextTextColor="@color/white"
+        app:hintTextColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/buttonIniciarSesion"
-        app:layout_constraintEnd_toEndOf="@+id/editTextUsuario"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/editTextUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/layoutUsuario"
+        app:placeholderTextColor="@color/white"
+        app:prefixTextColor="@color/white"
+        app:suffixTextColor="@color/white"
+        tools:layout_editor_absoluteX="184dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextContrasenya"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/icono_contrasenya_blanco"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonIniciarSesion"
-        android:layout_width="0dp"
+        android:layout_width="362dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/gray"
-        android:onClick="IniciarSesion"
+        android:background="@drawable/boton_custom"
         android:text="Iniciar sesión"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonReiniciarContrasenya"
-        app:layout_constraintEnd_toEndOf="@+id/editTextContrasenya"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/editTextContrasenya"
-        app:layout_constraintTop_toBottomOf="@+id/editTextContrasenya"
-        app:shapeAppearance="@style/CardView" /><![CDATA[
+        app:layout_constraintBottom_toTopOf="@+id/buttonCrearCuenta"
+        app:layout_constraintTop_toBottomOf="@+id/layoutContrasenya"
+        tools:layout_editor_absoluteX="185dp" /><![CDATA[
 
 
     />
@@ -68,37 +82,35 @@
     <Button
         android:id="@+id/buttonCrearCuenta"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/gray"
-        android:onClick="CrearCuenta"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/boton_custom"
         android:text="Crear cuenta"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonReiniciarContrasenya"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonReiniciarContrasenya"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonReiniciarContrasenya"
+        app:layout_constraintTop_toBottomOf="@+id/buttonIniciarSesion"
         app:shapeAppearance="@style/CardView" />
 
     <Button
         android:id="@+id/buttonReiniciarContrasenya"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/gray"
-        android:onClick="ReiniciarContrasenya"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/boton_custom"
         android:text="He olvidado mi contraseña"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonCrearCuenta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buttonCrearCuenta"
-        app:layout_constraintTop_toBottomOf="@+id/buttonIniciarSesion"
+        app:layout_constraintTop_toTopOf="@+id/buttonCrearCuenta"
         app:shapeAppearance="@style/CardView" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -106,7 +118,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="187dp" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
@@ -114,4 +126,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

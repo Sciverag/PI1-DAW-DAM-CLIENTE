@@ -27,6 +27,7 @@
         <activity android:name="es.ieslavereda.activities.CrearCuentaActivity"/>
         <activity android:name="es.ieslavereda.activities.ReiniciarContrasenyaActivity"/>
         <activity android:name="es.ieslavereda.activities.ContenidoActivity"/>
+        <activity android:name="es.ieslavereda.activities.ContenidoAmpliadoActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

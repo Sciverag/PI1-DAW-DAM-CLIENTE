@@ -1,7 +1,6 @@
 package es.ieslavereda.activities.model;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,31 +10,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import es.ieslavereda.MiraVereda.R;
-import es.ieslavereda.activities.model.contenido.Capitulo;
-import es.ieslavereda.activities.model.contenido.Corto;
-import es.ieslavereda.activities.model.contenido.Pelicula;
 import es.ieslavereda.activities.model.contenido.Serie;
-import es.ieslavereda.base.BaseActivity;
 import es.ieslavereda.base.ImageDownloader;
-import es.ieslavereda.base.Parameters;
 
 
-public class RecycleView extends RecyclerView.Adapter<RecycleView.ViewHolder> {
+public class RecycleViewSerie extends RecyclerView.Adapter<RecycleViewSerie.ViewHolder> {
 
     private LayoutInflater layoutInflater;
     private View.OnClickListener onClickListener;
 
-    private List<Contenido> contenido;
+    private List<Serie> contenido;
 
-    public RecycleView(Context context, List contenido){
+    public RecycleViewSerie(Context context, List contenido){
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.contenido = contenido;
     }
@@ -54,17 +43,8 @@ public class RecycleView extends RecyclerView.Adapter<RecycleView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //Imagen
-        ImageDownloader.downloadImage(contenido.get(position).getURL_imagen(), holder.imagen);
         //Titulo
         holder.titulo.setText(contenido.get(position).getTitulo());
-        //Valoracion media
-        holder.valoracion.setText(estrellasPuntuacion(contenido.get(position).getPuntMedia()));
-        //Año estreno
-        java.util.Date utilDate = new java.util.Date(contenido.get(position).getFechaEstreno().getTime());
-        String fecha = utilDate.toString();
-        String anyo = fecha.substring(fecha.length()-4);
-        holder.fecha.setText(anyo);
         //Posicion en lista
         holder.numero.setText((position+1)>10 ? position+1+"" : "0"+position+1+"");
     }
@@ -75,32 +55,12 @@ public class RecycleView extends RecyclerView.Adapter<RecycleView.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        private ImageView imagen;
-        private TextView titulo, valoracion, fecha, numero;
+        private TextView titulo, numero;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imagen = itemView.findViewById(R.id.imagenPelicula);
+
             titulo = itemView.findViewById(R.id.textViewNombrePelicula);
-            valoracion = itemView.findViewById(R.id.textViewPuntuacionPelicula);
-            fecha = itemView.findViewById(R.id.textViewAnyo);
             numero = itemView.findViewById(R.id.textViewNumero);
         }
     }
-
-    private String estrellasPuntuacion(float puntMedia) {
-        String estrellas = "";
-        float decimal = (puntMedia - (int) puntMedia);
-        for (int i=0; i<(int)puntMedia; i++) {
-            estrellas += "★";
-        }
-        if (decimal>=0.5f) {
-            estrellas += "U+2BEA";
-        }
-        if (puntMedia<0.5f) {
-            return "U+2BEA";
-        }
-        return estrellas;
-    }
-
-
 }

@@ -1,15 +1,22 @@
 package es.ieslavereda.activities.model.contenido;
 
+import java.io.Serializable;
+import java.sql.Date;
+
 import es.ieslavereda.activities.model.Contenido;
 
-import java.io.Serializable;
-import java.util.Date;
-
 public class Capitulo extends Contenido implements Serializable {
-    public int temporada;
+    /**
+     * El ID de la serie a la que pertenece el capítulo.
+     */
+    private int idSerie;
 
-    public Capitulo(String titulo, String descripcion, String actores, String duracion, String director, Date fechaEstreno, int puntuacion, int puntuacioMedia, String imagen, int temporada) {
-        super(titulo, descripcion, actores, duracion, director, fechaEstreno, puntuacion, puntuacioMedia, imagen);
-        this.temporada = temporada;
+    /**
+     * La temporada a la que pertenece el capítulo.
+     */
+    private int temporada;
+
+    public Capitulo(int id, String titulo, String descripcion, String URL_image, String actores, float puntMedia, Date fechaEstreno, float duracion_minutos, String director, int idGenero, int idTarifa) {
+        super(id, titulo, descripcion, URL_image, actores, puntMedia, fechaEstreno, duracion_minutos, director, idGenero, idTarifa);
     }
 }
