@@ -12,29 +12,34 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.ieslavereda.API.Connector;
 import es.ieslavereda.MiraVereda.R;
+import es.ieslavereda.activities.model.Contenido;
+import es.ieslavereda.activities.model.MiRecyclerViewSerie;
 import es.ieslavereda.activities.model.contenido.Corto;
 import es.ieslavereda.activities.model.contenido.Pelicula;
 import es.ieslavereda.activities.model.contenido.Serie;
 import es.ieslavereda.base.BaseActivity;
-import es.ieslavereda.activities.model.RecycleView;
+import es.ieslavereda.activities.model.MiRecyclerView;
 import es.ieslavereda.base.CallInterface;
 
 /**
  * @author
  * @since 2024-05-13
- * Actividad que muestra el contenido de la BBDD y la información del usuario
+ * Actividad que muestra el contenido de la BBDD
  */
 public class ContenidoActivity extends BaseActivity implements CallInterface, View.OnClickListener {
 
     private RecyclerView listaContenido;
-    private RecycleView recycleView;
+    private MiRecyclerView adaptador;
+    private MiRecyclerViewSerie adaptadorSerie;
     private List contenido;
     private Spinner filtro;
-    private String path;
+    private String path = "contenido/pelicula/";
+    private boolean primera;
 
 
     @Override
@@ -45,42 +50,68 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
         filtro = findViewById(R.id.spinnerFiltro);
 
         filtro.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Contenidos.values()));
+
+        executeCall(this);
+
         filtro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (i) {
-                    case 0:
-                        path = "contenido/pelicula/";
-                        break;
-                    case 1:
-                        path = "contenido/corto/";
-                        break;
-                    case 2:
-                        path = "serie/";
-                        break;
+                Contenidos contenidos = (Contenidos) adapterView.getSelectedItem();
+                path = contenidos.getPath();
+                if(primera){
+                    executeCall(new CallInterface() {
+                        @Override
+                        public void doInBackground() {
+                            if (contenidos.getTipo().equals("Pelicula")){
+                                contenido = Connector.getConector().getAsList(Pelicula.class, path);
+                            } if (contenidos.getTipo().equals("Corto")){
+                                contenido = Connector.getConector().getAsList(Corto.class, path);
+                            } else if (contenidos.getTipo().equals("Serie")){
+                                contenido = Connector.getConector().getAsList(Serie.class, path);
+                            }
+                        }
+
+
+                        @Override
+                        public void doInUI() {
+                            if (contenidos.getTipo().equals("Serie")) {
+                                adaptadorSerie = new MiRecyclerViewSerie(getBaseContext(), contenido);
+                                listaContenido.setAdapter(adaptadorSerie);
+                            } else {
+                                adaptador = new MiRecyclerView(getBaseContext(), contenido);
+                                listaContenido.setAdapter(adaptador);
+                            }
+                            adaptador.setOnClickListener(v -> {
+                                int position = listaContenido.getChildAdapterPosition(v);
+                                Intent intent = new Intent(getBaseContext(), ContenidoAmpliadoActivity.class);
+
+                                Contenido contenidoPasar = null;
+                                Serie contenidoPasarSerie = null;
+                                int id = 0;
+                                if (contenido.get(position) instanceof Contenido) {
+                                    contenidoPasar = (Contenido) contenido.get(position);
+                                    id = contenidoPasar.getId();
+                                } else {
+                                    contenidoPasarSerie = (Serie) contenido.get(position);
+                                    id = contenidoPasarSerie.getId();
+                                }
+                                intent.putExtra("id", id);
+                                startActivity(intent);
+                            });
+                        }
+                    });
+
+                    adaptador.notifyDataSetChanged();
                 }
+                primera = true;
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
+
+
         });
 
-        executeCall(new CallInterface() {
-            @Override
-            public void doInBackground() {
-                contenido = Connector.getConector().getAsList(Pelicula.class, path);
-            }
-
-            @Override
-            public void doInUI() {
-                recycleView.notifyDataSetChanged();
-            }
-        });
-
-        listaContenido.setOnClickListener(view -> {
-            Intent intent = new Intent(this, ContenidoAmpliadoActivity.class);
-            startActivity(intent);
-        });
     }
 
     @Override
@@ -93,24 +124,54 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
     @Override
     public void doInUI() {
         hideProgress();
-        RecycleView recycleView = new RecycleView(this, contenido);
-        recycleView.setOnClickListener(this);
-        listaContenido.setAdapter(recycleView);
+        adaptador = new MiRecyclerView(this, contenido);
+        adaptador.setOnClickListener(this);
+        listaContenido.setAdapter(adaptador);
         listaContenido.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    @Override
-    public void onClick(View view) {
-    }
-
     public enum Contenidos {
-        PELICULA("Películas"),
-        CORTO("Cortos"),
-        SERIE("Series");
+        PELICULA("Pelicula", "contenido/pelicula/"),
+        CORTO("Corto", "contenido/corto/"),
+        SERIE("Serie", "serie/");
 
         private String tipo;
-        Contenidos(String tipo){
+        private String path;
+        Contenidos(String tipo, String path){
             this.tipo = tipo;
+            this.path = path;
         }
+
+        @Override
+        public String toString() {
+            return tipo;
+        }
+
+        public String getTipo() {
+            return tipo;
+        }
+
+        public String getPath() {
+            return path;
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        int position = listaContenido.getChildAdapterPosition(v);
+        Intent intent = new Intent(this, ContenidoAmpliadoActivity.class);
+
+        Contenido contenidoPasar = null;
+        Serie contenidoPasarSerie = null;
+        int id = 0;
+        if (contenido.get(position) instanceof Contenido) {
+            contenidoPasar = (Contenido) contenido.get(position);
+            id = contenidoPasar.getId();
+        } else {
+            contenidoPasarSerie = (Serie) contenido.get(position);
+            id = contenidoPasarSerie.getId();
+        }
+//        intent.putExtra("id", id);
+        startActivity(intent);
     }
 }

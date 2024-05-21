@@ -10,6 +10,8 @@
     <color name="gray">#435564</color>
     <color name="background">#23272A</color>
     <color name="lime">#16E603</color>
+    <color name="yellow">#fff157</color>
+    <color name="gray2">#c9c9c9</color>
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#FFFFFFFF</color>
 

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:backgroundTint="@color/background">
+    android:background="@drawable/fondo">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layoutUsuario"
@@ -61,11 +60,11 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextContrasenya"
-            android:inputType="textPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:drawableLeft="@drawable/icono_contrasenya_blanco"
             android:hint="Contraseña"
+            android:inputType="textPassword"
             android:textColor="@color/white"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -117,7 +116,6 @@
         app:layout_constraintStart_toStartOf="@+id/buttonCrearCuenta"
         app:layout_constraintTop_toBottomOf="@+id/buttonCrearCuenta"
         app:shapeAppearance="@style/CardView" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

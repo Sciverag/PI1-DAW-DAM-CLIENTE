@@ -47,6 +47,9 @@ public class MainActivity extends BaseActivity implements CallInterface {
         crearCuenta = findViewById(R.id.buttonCrearCuenta);
         reiniciarContrasenya = findViewById(R.id.buttonReiniciarContrasenya);
 
+        usuario.setText("root");
+        contrasenya.setText("root");
+
 
         /**
          * Inicia una nueva actividad para crear una cuenta y

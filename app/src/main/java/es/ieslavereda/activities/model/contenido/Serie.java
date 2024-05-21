@@ -23,6 +23,11 @@ public class Serie {
     private String titulo;
 
     /**
+     * La URL de la imagen.
+     */
+    private String url_image;
+
+    /**
      * La descripción de la serie.
      */
     private String descripcion;
@@ -44,6 +49,10 @@ public class Serie {
 
     public String getTitulo() {
         return titulo;
+    }
+
+    public String getUrl_image() {
+        return url_image;
     }
 
     public String getDescripcion() {
