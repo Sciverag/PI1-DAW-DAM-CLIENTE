@@ -25,6 +25,8 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements View.OnCl
         reparto = findViewById(R.id.textViewRepartoCompleto);
 
 
+        titulo.setText();
+
     }
 
     @Override

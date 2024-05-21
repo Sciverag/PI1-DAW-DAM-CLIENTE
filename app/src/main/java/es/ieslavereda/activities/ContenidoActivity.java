@@ -171,7 +171,7 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
             contenidoPasarSerie = (Serie) contenido.get(position);
             id = contenidoPasarSerie.getId();
         }
-//        intent.putExtra("id", id);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
 }
