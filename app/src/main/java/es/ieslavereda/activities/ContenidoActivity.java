@@ -164,14 +164,22 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
         Contenido contenidoPasar = null;
         Serie contenidoPasarSerie = null;
         int id = 0;
-        if (contenido.get(position) instanceof Contenido) {
-            contenidoPasar = (Contenido) contenido.get(position);
+        String tipo;
+        if (contenido.get(position) instanceof Pelicula) {
+            contenidoPasar = (Pelicula) contenido.get(position);
             id = contenidoPasar.getId();
+            tipo = "pelicula";
+        } else if (contenido.get(position) instanceof Corto) {
+            contenidoPasar = (Corto) contenido.get(position);
+            id = contenidoPasar.getId();
+            tipo = "corto";
         } else {
             contenidoPasarSerie = (Serie) contenido.get(position);
             id = contenidoPasarSerie.getId();
+            tipo = "serie";
         }
         intent.putExtra("id", id);
+        intent.putExtra("tipo", tipo);
         startActivity(intent);
     }
 }
