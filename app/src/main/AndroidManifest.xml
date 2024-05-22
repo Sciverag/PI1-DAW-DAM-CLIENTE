@@ -28,7 +28,7 @@
         <activity android:name="es.ieslavereda.activities.ReiniciarContrasenyaActivity"/>
         <activity android:name="es.ieslavereda.activities.ContenidoActivity"/>
         <activity android:name="es.ieslavereda.activities.ContenidoAmpliadoActivity"/>
-
+        <activity android:name="es.ieslavereda.activities.CarritoActivity"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
