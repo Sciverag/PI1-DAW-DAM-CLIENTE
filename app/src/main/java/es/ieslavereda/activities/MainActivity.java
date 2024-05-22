@@ -83,6 +83,7 @@ public class MainActivity extends BaseActivity implements CallInterface {
             });
             if (usuarioGuardado!=null) {
                 Intent intent = new Intent(this, ContenidoActivity.class);
+                intent.putExtra("UsuarioPath", usuarioGuardado.getNombreUsuario());
                 startActivity(intent);
                 Toast.makeText(this, "Sesión iniciada como '" + usuario.getText() + "'", Toast.LENGTH_SHORT).show();
             } else {
@@ -121,8 +122,7 @@ public class MainActivity extends BaseActivity implements CallInterface {
      */
     public void ReiniciarContrasenya(View view) {
         Intent intent = new Intent(this, ReiniciarContrasenyaActivity.class);
-        // intent.putExtra("Usuario", nombreUsuario);
-        // intent.putExtra("Contraseña", contraseña);
+        intent.putExtra("UsuarioPath", usuarioGuardado.getNombreUsuario());
         ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK) {
                 //Cambiar contraseña del usuario a la introducida

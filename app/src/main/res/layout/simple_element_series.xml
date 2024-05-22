@@ -44,9 +44,11 @@
 
     <ImageView
         android:id="@+id/imagenSerie"
-        android:layout_width="52dp"
-        android:layout_height="59dp"
+        android:layout_width="50dp"
+        android:layout_height="62dp"
         android:layout_marginStart="20dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@+id/textViewNumero"
         app:layout_constraintStart_toEndOf="@+id/textViewNumero"
         app:layout_constraintTop_toTopOf="@+id/textViewNumero"

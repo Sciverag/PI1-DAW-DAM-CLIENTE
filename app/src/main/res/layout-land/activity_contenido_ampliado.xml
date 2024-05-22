@@ -19,7 +19,7 @@
             app:layout_constraintEnd_toEndOf="@+id/textViewRepartoCompleto" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imagenCompleto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -41,12 +41,13 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            app:layout_constraintTop_toBottomOf="@+id/imagenCompleto" />
 
         <TextView
             android:id="@+id/textViewDescripcionCompleto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="El día en que cumple once años, Harry Potter descubre que es hijo de dos conocidos hechiceros, de los que ha heredado poderes mágicos. Deberá acudir entonces a una famosa escuela de magia y hechicería: Howards."
             android:textColor="@color/white"
             android:textSize="20sp"

@@ -17,19 +17,7 @@
         android:paddingLeft="11dp"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textViewDuracionCompleto" />
-
-    <Button
-        android:id="@+id/buttonVolver"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/boton_custom"
-        android:drawableStart="@drawable/icono_volver_blanco"
-        android:paddingLeft="10dp"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textViewPrecioCompleto" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewTemporada" />
 
     <ImageView
         android:id="@+id/imagenCompleto"
@@ -42,7 +30,7 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/textViewTituloCompleto"
+        android:id="@+id/textViewTituloCapitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -57,19 +45,19 @@
         app:layout_constraintTop_toBottomOf="@+id/imagenCompleto" />
 
     <TextView
-        android:id="@+id/textViewDescripcionCompleto"
+        android:id="@+id/textViewDescripcionCapitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="El día en que cumple once años, Harry Potter descubre que es hijo de dos conocidos hechiceros, de los que ha heredado poderes mágicos. Deberá acudir entonces a una famosa escuela de magia y hechicería: Howards."
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewTituloCompleto"
-        app:layout_constraintStart_toStartOf="@+id/textViewTituloCompleto"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloCompleto" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewTituloCapitulo"
+        app:layout_constraintStart_toStartOf="@+id/textViewTituloCapitulo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTituloCapitulo" />
 
     <TextView
-        android:id="@+id/textViewFechaCompleto"
+        android:id="@+id/textViewFechaCapitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -77,23 +65,23 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold|italic"
-        app:layout_constraintStart_toStartOf="@+id/textViewDescripcionCompleto"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDescripcionCompleto" />
+        app:layout_constraintStart_toStartOf="@+id/textViewDescripcionCapitulo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescripcionCapitulo" />
 
     <TextView
-        android:id="@+id/textViewDuracionCompleto"
+        android:id="@+id/textViewNumeroEps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="90 min"
+        android:text="10 eps"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewFechaCompleto"
-        app:layout_constraintEnd_toEndOf="@+id/textViewDescripcionCompleto"
-        app:layout_constraintTop_toTopOf="@+id/textViewFechaCompleto" />
+        app:layout_constraintBottom_toBottomOf="@+id/textViewFechaCapitulo"
+        app:layout_constraintEnd_toEndOf="@+id/textViewDescripcionCapitulo"
+        app:layout_constraintTop_toTopOf="@+id/textViewFechaCapitulo" />
 
     <TextView
-        android:id="@+id/textViewPrecioCompleto"
+        android:id="@+id/textViewPrecioCapitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -101,43 +89,44 @@
         android:textColor="#f2bb30"
         android:textSize="25sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textViewFechaCompleto"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFechaCompleto" />
+        app:layout_constraintStart_toStartOf="@+id/textViewFechaCapitulo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFechaCapitulo" />
 
     <TextView
-        android:id="@+id/textViewDirectorCompleto"
+        android:id="@+id/textViewDirectorCapitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Director: "
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewDisponibleHasta"
-        app:layout_constraintStart_toStartOf="@+id/textViewPrecioCompleto"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPrecioCompleto" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewTemporada"
+        app:layout_constraintStart_toStartOf="@+id/textViewFechaCapitulo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPrecioCapitulo" />
 
     <TextView
-        android:id="@+id/textViewRepartoCompleto"
+        android:id="@+id/textViewRepartoCapitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Reparto: "
         android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewDuracionCompleto"
+        app:layout_constraintEnd_toEndOf="@+id/textViewDirectorCapitulo"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewDirectorCompleto"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDirectorCompleto" />
+        app:layout_constraintStart_toStartOf="@+id/textViewDirectorCapitulo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDirectorCapitulo" />
 
     <TextView
-        android:id="@+id/textViewDisponibleHasta"
+        android:id="@+id/textViewTemporada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="22/10/23"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewPrecioCompleto"
-        app:layout_constraintEnd_toEndOf="@+id/textViewDuracionCompleto"
-        app:layout_constraintTop_toTopOf="@+id/textViewPrecioCompleto" />
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPrecioCapitulo"
+        app:layout_constraintEnd_toEndOf="@+id/textViewNumeroEps"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNumeroEps" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,7 +43,7 @@ public class MiRecyclerView extends RecyclerView.Adapter<MiRecyclerView.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //Imagen
-        ImageDownloader.downloadImage(contenido.get(position).getURL_imagen(), holder.imagen);
+        ImageDownloader.downloadImage(contenido.get(position).getUrl_image(), holder.imagen);
         //Titulo
         holder.titulo.setText(contenido.get(position).getTitulo());
         //Valoracion media

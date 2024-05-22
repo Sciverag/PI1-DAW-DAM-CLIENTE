@@ -40,7 +40,7 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
     private Spinner filtro;
     private String path = "contenido/pelicula/";
     private boolean primera;
-
+    private String tipo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,9 +77,15 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
                             if (contenidos.getTipo().equals("Serie")) {
                                 adaptadorSerie = new MiRecyclerViewSerie(getBaseContext(), contenido);
                                 listaContenido.setAdapter(adaptadorSerie);
+                                tipo = "serie";
                             } else {
                                 adaptador = new MiRecyclerView(getBaseContext(), contenido);
                                 listaContenido.setAdapter(adaptador);
+                                if (contenidos.getTipo().equals("Pelicula")) {
+                                    tipo = "pelicula";
+                                } else {
+                                    tipo = "corto";
+                                }
                             }
                             adaptador.setOnClickListener(v -> {
                                 int position = listaContenido.getChildAdapterPosition(v);
@@ -96,6 +102,26 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
                                     id = contenidoPasarSerie.getId();
                                 }
                                 intent.putExtra("id", id);
+                                intent.putExtra("tipo", tipo);
+
+                                startActivity(intent);
+                            });
+                            adaptadorSerie.setOnClickListener(view1 -> {
+                                int position = listaContenido.getChildAdapterPosition(view1);
+                                Intent intent = new Intent(getBaseContext(), ContenidoAmpliadoActivity.class);
+                                Contenido contenidoPasar = null;
+                                Serie contenidoPasarSerie = null;
+                                int id = 0;
+                                if (contenido.get(position) instanceof Contenido) {
+                                    contenidoPasar = (Contenido) contenido.get(position);
+                                    id = contenidoPasar.getId();
+                                } else {
+                                    contenidoPasarSerie = (Serie) contenido.get(position);
+                                    id = contenidoPasarSerie.getId();
+                                }
+                                intent.putExtra("id", id);
+                                intent.putExtra("tipo", "serie");
+
                                 startActivity(intent);
                             });
                         }
@@ -164,7 +190,6 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
         Contenido contenidoPasar = null;
         Serie contenidoPasarSerie = null;
         int id = 0;
-        String tipo;
         if (contenido.get(position) instanceof Pelicula) {
             contenidoPasar = (Pelicula) contenido.get(position);
             id = contenidoPasar.getId();

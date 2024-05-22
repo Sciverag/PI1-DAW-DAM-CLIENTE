@@ -13,9 +13,9 @@ public class Tarifa {
     /**
      * El precio de la tarifa.
      */
-    private Double precio;
+    private Float precio;
 
-    public Tarifa(int codigo, Double precio) {
+    public Tarifa(int codigo, Float precio) {
         this.codigo = codigo;
         this.precio = precio;
     }
@@ -24,7 +24,7 @@ public class Tarifa {
         return codigo;
     }
 
-    public Double getPrecio() {
+    public Float getPrecio() {
         return precio;
     }
 
@@ -32,7 +32,7 @@ public class Tarifa {
         this.codigo = codigo;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(Float precio) {
         this.precio = precio;
     }
 

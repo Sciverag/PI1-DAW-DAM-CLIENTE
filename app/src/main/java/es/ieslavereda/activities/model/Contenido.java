@@ -26,7 +26,7 @@ public abstract class Contenido {
     /**
      * La URL de la imagen asociada con el contenido.
      */
-    private String URL_imagen;
+    private String url_image;
 
     /**
      * Los actores que participan en el contenido.
@@ -66,13 +66,13 @@ public abstract class Contenido {
     /**
      * La fecha de la última modificación del contenido.
      */
-    private Date changedTs;
+
 
     public Contenido(int id, String titulo, String descripcion, String URL_image, String actores, float puntMedia, Date fechaEstreno, float duracion_minutos, String director, int idGenero, int idTarifa) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.URL_imagen = URL_image;
+        this.url_image = URL_image;
         this.actores = actores;
         this.puntMedia = puntMedia;
         this.fechaEstreno = fechaEstreno;
@@ -94,8 +94,8 @@ public abstract class Contenido {
         return descripcion;
     }
 
-    public String getURL_imagen() {
-        return URL_imagen;
+    public String getUrl_image() {
+        return url_image;
     }
 
     public String getActores() {
@@ -126,10 +126,6 @@ public abstract class Contenido {
         return idTarifa;
     }
 
-    public Date getChangedTs() {
-        return changedTs;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -142,8 +138,8 @@ public abstract class Contenido {
         this.descripcion = descripcion;
     }
 
-    public void setURL_imagen(String URL_imagen) {
-        this.URL_imagen = URL_imagen;
+    public void setUrl_image(String url_image) {
+        this.url_image = url_image;
     }
 
     public void setActores(String actores) {
@@ -174,9 +170,6 @@ public abstract class Contenido {
         this.idTarifa = idTarifa;
     }
 
-    public void setChangedTs(Date changedTs) {
-        this.changedTs = changedTs;
-    }
 
     /**
      * Compara este objeto con otro para determinar si son iguales.
