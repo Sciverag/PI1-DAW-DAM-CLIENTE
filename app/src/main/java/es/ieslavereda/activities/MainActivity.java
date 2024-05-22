@@ -32,7 +32,6 @@ public class MainActivity extends BaseActivity implements CallInterface {
     private EditText usuario, contrasenya;
     private Button iniciarSesion, crearCuenta, reiniciarContrasenya;
     private Root root;
-    private ArrayList<Usuario> usuarios;
     private String autenticar;
     private Usuario usuarioGuardado;
     
@@ -65,7 +64,11 @@ public class MainActivity extends BaseActivity implements CallInterface {
         });
         crearCuenta.setOnClickListener(view -> {
             Intent intent = new Intent(this, CrearCuentaActivity.class);
-            intent.putExtra("Usuarios", usuarios);
+            resultLauncher.launch(intent);
+        });
+
+        reiniciarContrasenya.setOnClickListener(view -> {
+            Intent intent = new Intent(this, ReiniciarContrasenyaActivity.class);
             resultLauncher.launch(intent);
         });
 

@@ -7,23 +7,104 @@
     android:background="@drawable/fondo">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutCrearUsuario"
+        android:id="@+id/layoutApellido"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="363dp"
         android:layout_height="60dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
         app:counterTextColor="@color/white"
         app:helperTextTextColor="@color/white"
         app:hintTextColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/layoutCrearContrasenya"
+        app:placeholderTextColor="@color/white"
+        app:prefixTextColor="@color/white"
+        app:suffixTextColor="@color/white"
+        tools:layout_editor_absoluteX="184dp"
+        tools:layout_editor_absoluteY="361dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextApellidoCrear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/normal"
+            android:hint="Apellido"
+            android:inputType="text|textPersonName"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutNombre"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="363dp"
+        android:layout_height="60dp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:counterTextColor="@color/white"
+        app:helperTextTextColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:placeholderTextColor="@color/white"
+        app:prefixTextColor="@color/white"
+        app:suffixTextColor="@color/white"
+        tools:layout_editor_absoluteX="184dp"
+        tools:layout_editor_absoluteY="301dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextNombreCrear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/normal"
+            android:hint="Nombre"
+            android:inputType="text|textPersonName"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutCrearContrasenyaConfirmacion"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="363dp"
+        android:layout_height="60dp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:counterTextColor="@color/white"
+        app:helperTextTextColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutEmail"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/layoutEmail"
+        app:placeholderTextColor="@color/white"
+        app:prefixTextColor="@color/white"
+        app:suffixTextColor="@color/white">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextContrasenyaConfirmacion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/icono_contrasenya_blanco"
+            android:hint="Confirmar contraseña"
+            android:inputType="text|textPassword|textNoSuggestions"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutCrearUsuario"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="363dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:counterTextColor="@color/white"
+        app:helperTextTextColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/layoutCrearContrasenya"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
         app:placeholderTextColor="@color/white"
         app:prefixTextColor="@color/white"
         app:suffixTextColor="@color/white">
@@ -43,17 +124,15 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="363dp"
         android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
         app:counterTextColor="@color/white"
         app:helperTextTextColor="@color/white"
         app:hintTextColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/layoutCrearContrasenyaConfirmacion"
-        app:layout_constraintEnd_toEndOf="@+id/layoutCrearUsuario"
-        app:layout_constraintStart_toStartOf="@+id/layoutCrearUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/layoutCrearUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/layoutCrearUsuario"
+        app:layout_constraintTop_toTopOf="@+id/layoutCrearUsuario"
         app:placeholderTextColor="@color/white"
         app:prefixTextColor="@color/white"
         app:suffixTextColor="@color/white">
@@ -70,49 +149,56 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutCrearContrasenyaConfirmacion"
+        android:id="@+id/layoutEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="363dp"
         android:layout_height="60dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
         app:counterTextColor="@color/white"
         app:helperTextTextColor="@color/white"
         app:hintTextColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/buttonConfirmarNuevaCuenta"
-        app:layout_constraintEnd_toEndOf="@+id/layoutCrearContrasenya"
-        app:layout_constraintStart_toStartOf="@+id/layoutCrearContrasenya"
-        app:layout_constraintTop_toBottomOf="@+id/layoutCrearContrasenya"
+        app:layout_constraintEnd_toStartOf="@+id/layoutCrearContrasenyaConfirmacion"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutCrearUsuario"
         app:placeholderTextColor="@color/white"
         app:prefixTextColor="@color/white"
         app:suffixTextColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextContrasenyaConfirmacion"
+            android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:drawableLeft="@drawable/icono_contrasenya_blanco"
-            android:hint="Confirmar contraseña"
-            android:inputType="textPassword"
+            android:drawableLeft="@drawable/email"
+            android:hint="Email"
+            android:inputType="text|textWebEmailAddress"
             android:textColor="@color/white"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonConfirmarNuevaCuenta"
-        android:layout_width="0dp"
+        android:layout_width="363dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:background="@drawable/boton_custom"
         android:text="Crear Cuenta"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/layoutCrearContrasenyaConfirmacion"
-        app:layout_constraintStart_toStartOf="@+id/layoutCrearContrasenyaConfirmacion"
-        app:layout_constraintTop_toBottomOf="@+id/layoutCrearContrasenyaConfirmacion"
-        app:shapeAppearance="@style/CardView" />
+        app:shapeAppearance="@style/CardView"
+        tools:layout_editor_absoluteX="184dp"
+        tools:layout_editor_absoluteY="571dp" />
+
+    <Button
+        android:id="@+id/cancelarCrearCuenta"
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/boton_custom"
+        android:text="CANCELAR"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:shapeAppearance="@style/CardView"
+        tools:layout_editor_absoluteX="184dp"
+        tools:layout_editor_absoluteY="635dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
