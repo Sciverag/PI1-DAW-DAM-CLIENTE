@@ -42,7 +42,7 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
     private String path = "contenido/pelicula/";
     private List contenido;
     private boolean primera;
-    private String tipo;
+    private String tipo,tagUsuario;
     private int id;
 
     @Override
@@ -54,8 +54,14 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
         volver = findViewById(R.id.buttonVolver2);
         carrito = findViewById(R.id.buttonCarrito);
 
+        tagUsuario = getIntent().getStringExtra("UsuarioPath");
+
         volver.setOnClickListener(view -> finish());
-        carrito.setOnClickListener(view -> startActivity(new Intent(this, CarritoActivity.class)));
+        carrito.setOnClickListener(view -> {
+            Intent intent = new Intent(this, CarritoActivity.class);
+            intent.putExtra("tag_usuario",tagUsuario);
+            startActivity(intent);
+        });
 
         filtro.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, TipoContenidoENUM.values()));
 

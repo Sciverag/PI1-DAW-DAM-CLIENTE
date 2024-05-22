@@ -14,7 +14,7 @@ import java.util.List;
 import es.ieslavereda.MiraVereda.R;
 import es.ieslavereda.base.ImageDownloader;
 
-public class MiRecyclerViewCarrito extends RecyclerView.Adapter<MiRecyclerViewCarrito.CartViewHolder> {
+public class MiRecyclerViewCarrito extends RecyclerView.Adapter<MiRecyclerViewCarrito.ViewHolder> {
 
     private List<Contenido> contenidos;
     private Context context;
@@ -26,13 +26,13 @@ public class MiRecyclerViewCarrito extends RecyclerView.Adapter<MiRecyclerViewCa
 
     @NonNull
     @Override
-    public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.simple_element_carrito, parent, false);
-        return new CartViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Contenido contenido = contenidos.get(position);
         holder.textViewNombre.setText(contenido.getTitulo());
         holder.textViewPrecio.setText("8");
@@ -44,17 +44,17 @@ public class MiRecyclerViewCarrito extends RecyclerView.Adapter<MiRecyclerViewCa
         return contenidos.size();
     }
 
-    public static class CartViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewNombre;
         TextView textViewPrecio;
         ImageView imageViewProducto;
 
-        public CartViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewNombre = itemView.findViewById(R.id.textViewNombre);
             textViewPrecio = itemView.findViewById(R.id.textViewPrecio);
-            imageViewProducto = itemView.findViewById(R.id.imageViewProducto);
+            imageViewProducto = itemView.findViewById(R.id.imageViewImagen);
         }
     }
 }

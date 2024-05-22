@@ -43,9 +43,8 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Botón para finalizar la compra -->
     <Button
-        android:id="@+id/buttonCarrito"
+        android:id="@+id/buttonFinalizar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -53,4 +52,15 @@
         android:text="Finalizar Compra"
         android:textColor="@color/white"
         android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/buttonVolverCarrito"
+        android:layout_width="45dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/boton_custom"
+        android:drawableStart="@drawable/icono_volver_blanco"
+        android:paddingLeft="10dp"
+        android:textColor="#FFFFFF" />
+
 </LinearLayout>
