@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/fondo"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo">
 
         <Button
             android:id="@+id/buttonComprar"
@@ -16,7 +17,19 @@
             android:paddingLeft="11dp"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textViewRepartoCompleto" />
+            app:layout_constraintEnd_toEndOf="@+id/textViewDuracionCompleto" />
+
+        <Button
+            android:id="@+id/buttonVolver"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/boton_custom"
+            android:drawableStart="@drawable/icono_volver_blanco"
+            android:paddingLeft="10dp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textViewPrecioCompleto" />
 
         <ImageView
             android:id="@+id/imagenCompleto"
@@ -71,36 +84,36 @@
             android:id="@+id/textViewDuracionCompleto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="90 min"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewFechaCompleto"
             app:layout_constraintEnd_toEndOf="@+id/textViewDescripcionCompleto"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDescripcionCompleto" />
+            app:layout_constraintTop_toTopOf="@+id/textViewFechaCompleto" />
 
         <TextView
             android:id="@+id/textViewPrecioCompleto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:text="7.81€"
             android:textColor="#f2bb30"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewFechaCompleto"
-            app:layout_constraintEnd_toStartOf="@+id/textViewDuracionCompleto"
-            app:layout_constraintStart_toEndOf="@+id/textViewFechaCompleto"
-            app:layout_constraintTop_toTopOf="@+id/textViewFechaCompleto" />
+            app:layout_constraintStart_toStartOf="@+id/textViewFechaCompleto"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFechaCompleto" />
 
         <TextView
             android:id="@+id/textViewDirectorCompleto"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Director: "
             android:textColor="@color/white"
             android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="@+id/textViewFechaCompleto"
+            app:layout_constraintEnd_toEndOf="@+id/textViewDisponibleHasta"
+            app:layout_constraintStart_toStartOf="@+id/textViewPrecioCompleto"
             app:layout_constraintTop_toBottomOf="@+id/textViewPrecioCompleto" />
 
         <TextView
@@ -115,4 +128,16 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/textViewDirectorCompleto"
             app:layout_constraintTop_toBottomOf="@+id/textViewDirectorCompleto" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textViewDisponibleHasta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="22/10/23"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewPrecioCompleto"
+            app:layout_constraintEnd_toEndOf="@+id/textViewDuracionCompleto"
+            app:layout_constraintTop_toTopOf="@+id/textViewPrecioCompleto" />
+</androidx.constraintlayout.widget.ConstraintLayout>
