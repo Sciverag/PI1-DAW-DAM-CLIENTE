@@ -27,7 +27,6 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
     private Button anyadirCarrito;
     private Button volver;
     private Contenido contenido;
-
     private Serie contenidoSerie;
     private List<Capitulo> capitulos;
     private int id;

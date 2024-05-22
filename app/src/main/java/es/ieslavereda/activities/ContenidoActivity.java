@@ -109,8 +109,8 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
                                     int position = listaContenido.getChildAdapterPosition(v);
                                     Intent intent = new Intent(getBaseContext(), ContenidoAmpliadoActivity.class);
                                     Contenido contenidoPasar;
-                                        contenidoPasar = (Contenido) contenido.get(position);
-                                        id = contenidoPasar.getId();
+                                    contenidoPasar = (Contenido) contenido.get(position);
+                                    id = contenidoPasar.getId();
                                     intent.putExtra("id", id);
                                     intent.putExtra("tipo", tipo);
                                     startActivity(intent);

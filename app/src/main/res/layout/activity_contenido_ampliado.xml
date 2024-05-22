@@ -78,7 +78,7 @@
         android:textSize="20sp"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="@+id/textViewDescripcionCompleto"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDescripcionCompleto" />
+        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
     <TextView
         android:id="@+id/textViewDuracionCompleto"
@@ -140,4 +140,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/textViewPrecioCompleto"
         app:layout_constraintEnd_toEndOf="@+id/textViewDuracionCompleto"
         app:layout_constraintTop_toTopOf="@+id/textViewPrecioCompleto" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:progressTint="@color/lime"
+        app:layout_constraintEnd_toEndOf="@+id/textViewDescripcionCompleto"
+        app:layout_constraintStart_toStartOf="@+id/textViewDescripcionCompleto"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescripcionCompleto" />
 </androidx.constraintlayout.widget.ConstraintLayout>
