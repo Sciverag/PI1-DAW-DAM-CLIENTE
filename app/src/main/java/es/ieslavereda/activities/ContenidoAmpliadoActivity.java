@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -24,8 +25,8 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
 
     private TextView titulo, descripcion, fecha, precio, duracion, director, reparto, disponibleHasta;
     private ImageView imagen;
-    private Button anyadirCarrito;
-    private Button volver;
+    private Button anyadirCarrito, volver;
+    private RatingBar puntuacionUsuario;
     private Contenido contenido;
     private Serie contenidoSerie;
     private List<Capitulo> capitulos;
@@ -47,6 +48,7 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
         imagen = findViewById(R.id.imagenCompleto);
         anyadirCarrito = findViewById(R.id.buttonComprar);
         volver = findViewById(R.id.buttonVolver);
+        puntuacionUsuario = findViewById(R.id.puntuacionUsuario);
 
         executeCall(this);
        // anyadirCarrito.setOnClickListener();
@@ -89,6 +91,7 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
             director.setText(contenido.getDirector());
             reparto.setText(contenido.getActores());
             ImageDownloader.downloadImage(contenido.getUrl_image(),imagen);
+            puntuacionUsuario.setOnRatingBarChangeListener((ratingBar, v, b) -> Connector.getConector().post(Float.class, null, "contenido/update/puntuacion/&id=" + id + "&punt=" + puntuacionUsuario.getRating()));
             if (contenido instanceof Pelicula) {
                 String disponibilidad = ((Pelicula) contenido).getDisponible_hasta().toString();
                 String fecha2 =  disponibilidad.substring(4,10) + " " + disponibilidad.substring(disponibilidad.length()-4);
@@ -99,13 +102,14 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
             titulo.setText(contenidoSerie.getTitulo());
             descripcion.setText(contenidoSerie.getDescripcion());
             fecha.setText("Disponible hasta: " + contenidoSerie.getDisponible_hasta().toString().substring(contenidoSerie.getDisponible_hasta().toString().length() - 7));
-            precio.setVisibility(View.GONE);
+            precio.setText("Precio individual por episodio");
             duracion.setText(capitulos.size() + " eps");
             director.setText(capitulos.get(0).getDirector());
             reparto.setText(capitulos.get(0).getActores() + "...");
             anyadirCarrito.setVisibility(View.INVISIBLE);
-            String disponibilidad = ((Serie) contenidoSerie).getDisponible_hasta().toString();
+            String disponibilidad = contenidoSerie.getDisponible_hasta().toString();
             disponibleHasta.setText(disponibilidad.substring(disponibilidad.length() - 7));
+            puntuacionUsuario.setVisibility(View.GONE);
         }
     }
 }
