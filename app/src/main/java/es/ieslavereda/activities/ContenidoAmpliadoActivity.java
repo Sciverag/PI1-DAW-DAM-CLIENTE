@@ -10,6 +10,7 @@ import java.util.List;
 
 import es.ieslavereda.API.Connector;
 import es.ieslavereda.MiraVereda.R;
+import es.ieslavereda.activities.model.CarroCompra;
 import es.ieslavereda.activities.model.Contenido;
 import es.ieslavereda.activities.model.contenido.Capitulo;
 import es.ieslavereda.activities.model.contenido.Corto;
@@ -50,6 +51,9 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
         executeCall(this);
 
         volver.setOnClickListener(view -> finish());
+        anyadirCarrito.setOnClickListener(view -> {
+            Connector.getConector().post(CarroCompra.class, null, "carro/&user=tag&idCont="+id);
+        });
     }
 
     @Override

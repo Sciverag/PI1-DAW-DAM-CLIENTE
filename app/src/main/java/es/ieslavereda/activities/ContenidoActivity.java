@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 
@@ -41,6 +42,7 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
     private String path = "contenido/pelicula/";
     private boolean primera;
     private String tipo;
+    private Button volver, carrito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,11 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
         setContentView(R.layout.activity_contenido);
         listaContenido = findViewById(R.id.recyclerViewContenido);
         filtro = findViewById(R.id.spinnerFiltro);
+        volver = findViewById(R.id.buttonVolver2);
+        carrito = findViewById(R.id.buttonCarrito);
+
+        volver.setOnClickListener(view -> finish());
+        carrito.setOnClickListener(view -> startActivity(new Intent(this, CarritoActivity.class)));
 
         filtro.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Contenidos.values()));
 
