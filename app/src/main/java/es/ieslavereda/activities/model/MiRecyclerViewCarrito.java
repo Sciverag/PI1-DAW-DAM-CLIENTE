@@ -18,25 +18,25 @@ public class MiRecyclerViewCarrito extends RecyclerView.Adapter<MiRecyclerViewCa
 
     private List<Contenido> contenidos;
     private Context context;
+    private LayoutInflater layoutInflater;
 
-    public MiRecyclerViewCarrito(List<Contenido> contenidos, Context context) {
+    public MiRecyclerViewCarrito(List contenidos, Context context) {
+        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.contenidos = contenidos;
-        this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.simple_element_carrito, parent, false);
+        View view = layoutInflater.inflate(R.layout.simple_element_carrito,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Contenido contenido = contenidos.get(position);
-        holder.textViewNombre.setText(contenido.getTitulo());
+        holder.textViewNombre.setText(contenidos.get(position).getTitulo());
         holder.textViewPrecio.setText("8");
-        ImageDownloader.downloadImage(contenido.getUrl_image(), holder.imageViewProducto);
+        ImageDownloader.downloadImage(contenidos.get(position).getUrl_image(), holder.imageViewProducto);
     }
 
     @Override
