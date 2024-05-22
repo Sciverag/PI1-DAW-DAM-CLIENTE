@@ -18,6 +18,7 @@ import es.ieslavereda.activities.model.contenido.Pelicula;
 import es.ieslavereda.activities.model.contenido.Serie;
 import es.ieslavereda.base.BaseActivity;
 import es.ieslavereda.base.CallInterface;
+import es.ieslavereda.base.ImageDownloader;
 
 public class ContenidoAmpliadoActivity extends BaseActivity implements CallInterface, View.OnClickListener  {
 
@@ -49,6 +50,7 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
         volver = findViewById(R.id.buttonVolver);
 
         executeCall(this);
+       // anyadirCarrito.setOnClickListener();
 
         volver.setOnClickListener(view -> finish());
         anyadirCarrito.setOnClickListener(view -> {
@@ -87,6 +89,7 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
             duracion.setText(contenido.getDuracion_minutos()+" min");
             director.setText(contenido.getDirector());
             reparto.setText(contenido.getActores());
+            ImageDownloader.downloadImage(contenido.getUrl_image(),imagen);
             if (contenido instanceof Pelicula) {
                 String disponibilidad = ((Pelicula) contenido).getDisponible_hasta().toString();
                 String fecha2 =  disponibilidad.substring(4,10) + " " + disponibilidad.substring(disponibilidad.length()-4);

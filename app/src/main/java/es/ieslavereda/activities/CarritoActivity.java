@@ -32,18 +32,15 @@ public class CarritoActivity extends AppCompatActivity {
         textViewTotal = findViewById(R.id.textViewTotal);
         buttonCheckout = findViewById(R.id.buttonCarrito);
 
-        // Initialize the list and adapter
         carritoContenido = GestorCarrito.getInstance().obtenerCarrito();
         adaptadorRecyclerViewCarrito = new MiRecyclerViewCarrito(carritoContenido, this);
 
         recyclerViewCarrito.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewCarrito.setAdapter(adaptadorRecyclerViewCarrito);
 
-        // Update total amount
         actualizarPrecioTotal();
 
         buttonCheckout.setOnClickListener(v -> {
-            // Handle checkout logic here
             Toast.makeText(CarritoActivity.this, "Checkout Clicked", Toast.LENGTH_SHORT).show();
         });
     }
