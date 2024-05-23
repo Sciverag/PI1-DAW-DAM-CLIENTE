@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +17,10 @@ import es.ieslavereda.API.Connector;
 import es.ieslavereda.MiraVereda.R;
 import es.ieslavereda.activities.model.CarroCompra;
 import es.ieslavereda.activities.model.Contenido;
+import es.ieslavereda.activities.model.Factura;
 import es.ieslavereda.activities.model.LineaFactura;
 import es.ieslavereda.activities.model.MiRecyclerViewCarrito;
+import es.ieslavereda.activities.model.contenido.Pelicula;
 import es.ieslavereda.base.BaseActivity;
 import es.ieslavereda.base.CallInterface;
 
@@ -31,6 +34,7 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
     private double totalAmount = 0.0;
     private String tagUsuario;
     private List<Contenido> contenidoCarro;
+    private Factura factura;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +48,21 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
 
 
         contenidoCarro = new ArrayList<>();
-       // actualizarPrecioTotal();
-
         buttonFinalizar.setOnClickListener(v -> {
-            Toast.makeText(CarritoActivity.this, "Checkout Clicked", Toast.LENGTH_SHORT).show();
+            factura = Connector.getConector().get(Factura.class,"factura/finalizar/tag");
+            if (factura != null)
+                Toast.makeText(this,"Factura Creada al usuario" +tagUsuario,Toast.LENGTH_SHORT).show();
         });
         buttonVolver.setOnClickListener(view -> finish());
     }
 
-//    private void actualizarPrecioTotal() {
-//        totalAmount = 0.0;
-//        for (Contenido product : carritoContenido) {
-//            totalAmount += 8;
-//        }
-//        textViewTotal.setText("$" + String.format("%.2f", totalAmount));
-//    }
+    private void actualizarPrecioTotal() {
+        totalAmount = 0.0;
+        for (Contenido contenido : contenidoCarro) {
+            totalAmount += 8;
+        }
+        textViewTotal.setText("€" + String.format("%.2f", totalAmount));
+    }
 
     @Override
     public void onClick(View view) {
@@ -67,11 +71,10 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
 
     @Override
     public void doInBackground() {
-        tagUsuario = getIntent().getStringExtra("tag_usuario");
+        tagUsuario = getIntent().getExtras().getString("tag_usuario");
         CarroCompra carro = Connector.getConector().get(CarroCompra.class,"carro/&user="+tagUsuario);
         int idCarro = carro.getId();
-        if (tagUsuario != null)
-            lineasCarrito = Connector.getConector().get(List.class,"LineaFactura/"+idCarro);
+        lineasCarrito = Connector.getConector().getAsList(LineaFactura.class,"LineaFactura/&carro="+idCarro);
         for (LineaFactura linea : lineasCarrito){
             contenidoCarro.add(Connector.getConector().get(Contenido.class,"lineaFactura/"+linea.getId()));
         }
@@ -82,5 +85,6 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
         adaptadorRecyclerViewCarrito = new MiRecyclerViewCarrito(contenidoCarro, this);
         recyclerViewCarrito.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewCarrito.setAdapter(adaptadorRecyclerViewCarrito);
+        actualizarPrecioTotal();
     }
 }

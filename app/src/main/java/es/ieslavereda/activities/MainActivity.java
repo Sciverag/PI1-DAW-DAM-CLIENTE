@@ -78,14 +78,14 @@ public class MainActivity extends BaseActivity implements CallInterface {
 
                 }
             });
-            if (usuarioGuardado!=null) {
-                Intent intent = new Intent(this, ContenidoActivity.class);
-                intent.putExtra("UsuarioPath", usuarioGuardado.getNombreUsuario());
-                startActivity(intent);
-                Toast.makeText(this, "Sesión iniciada como '" + usuario.getText() + "'", Toast.LENGTH_SHORT).show();
+           if (usuarioGuardado!=null) {
+               Intent intent = new Intent(this, ContenidoActivity.class);
+               intent.putExtra("UsuarioPath", usuarioGuardado.getNombreUsuario());
+               startActivity(intent);
+               Toast.makeText(this, "Sesión iniciada como '" + usuario.getText() + "'", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show();
-            }
+           }
         });
 
     }
@@ -97,15 +97,6 @@ public class MainActivity extends BaseActivity implements CallInterface {
 
     @Override
     public void doInUI() {
-//        hideProgress();
-//        txtView.setText(root.list.get(0).weather.get(0).description);
-//        ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + root.list.get(0).weather.get(0).icon + Parameters.ICON_URL_POST, imageView);
-//
-//        Date date = new Date((long)root.list.get(0).dt*1000);
-//        SimpleDateFormat dateDayOfWeek = new SimpleDateFormat("E");
-//        SimpleDateFormat dateDay = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
-//        textViewDayOfWeek.setText(dateDayOfWeek.format(date));
-//        textViewDay.setText(dateDay.format(date));
     }
 
 

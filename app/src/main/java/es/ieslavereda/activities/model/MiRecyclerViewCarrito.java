@@ -35,7 +35,7 @@ public class MiRecyclerViewCarrito extends RecyclerView.Adapter<MiRecyclerViewCa
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewNombre.setText(contenidos.get(position).getTitulo());
-        holder.textViewPrecio.setText("8");
+        holder.textViewPrecio.setText("8 €");
         ImageDownloader.downloadImage(contenidos.get(position).getUrl_image(), holder.imageViewProducto);
     }
 
