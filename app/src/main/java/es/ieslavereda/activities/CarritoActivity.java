@@ -24,6 +24,10 @@ import es.ieslavereda.activities.model.contenido.Pelicula;
 import es.ieslavereda.base.BaseActivity;
 import es.ieslavereda.base.CallInterface;
 
+
+/**
+ * Actividad para mostrar y gestionar el carrito de compras.
+ */
 public class CarritoActivity extends BaseActivity implements CallInterface, View.OnClickListener {
 
     private RecyclerView recyclerViewCarrito;
@@ -36,6 +40,14 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
     private List<Contenido> contenidoCarro;
     private Factura factura;
 
+    /**
+     * Llamado cuando la actividad es creada por primera vez. Aquí es donde debes hacer toda la configuración
+     * estática normal: crear vistas, enlazar datos a listas, etc.
+     *
+     * @param savedInstanceState Si la actividad está siendo re-inicializada después de haber sido previamente
+     *                           apagada, entonces este Bundle contiene los datos que más recientemente suministró
+     *                           en onSaveInstanceState(Bundle). Nota: De lo contrario, es null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +68,9 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
         buttonVolver.setOnClickListener(view -> finish());
     }
 
+    /**
+     * Actualiza el precio total del carrito sumando el precio de todos los contenidos en el carrito.
+     */
     private void actualizarPrecioTotal() {
         totalAmount = 0.0;
         for (Contenido contenido : contenidoCarro) {
@@ -64,11 +79,20 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
         textViewTotal.setText("€" + String.format("%.2f", totalAmount));
     }
 
+    /**
+     * Método llamado cuando una vista ha sido clicada.
+     *
+     * @param view La vista que fue clicada.
+     */
     @Override
     public void onClick(View view) {
 
     }
 
+    /**
+     * Obtiene los datos del carrito de compras en segundo plano.
+     * Este método se llama en un hilo de fondo para realizar operaciones de red.
+     */
     @Override
     public void doInBackground() {
         tagUsuario = getIntent().getExtras().getString("tag_usuario");
@@ -80,6 +104,10 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
         }
     }
 
+    /**
+     * Actualiza la interfaz de usuario con los datos del carrito obtenidos.
+     * Este método se llama en el hilo de la interfaz de usuario para actualizar las vistas con los datos obtenidos en doInBackground.
+     */
     @Override
     public void doInUI() {
         adaptadorRecyclerViewCarrito = new MiRecyclerViewCarrito(contenidoCarro, this);

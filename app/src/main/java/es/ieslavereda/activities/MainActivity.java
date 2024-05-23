@@ -18,9 +18,10 @@ import es.ieslavereda.base.CallInterface;
 
 
 /**
- * @author
- * @since 2024-05-13
- * Actividad principal con 3 opciones, iniciar sesión, crear cuenta, y reiniciar contraseña.
+ * Actividad principal con 3 opciones: iniciar sesión, crear cuenta y reiniciar contraseña.
+ * Esta actividad muestra campos para que los usuarios ingresen su nombre de usuario y contraseña.
+ * Los usuarios pueden iniciar sesión, crear una nueva cuenta o reiniciar su contraseña.
+ * Si se inicia sesión correctamente, se redirige a la actividad de contenido.
  */
 public class MainActivity extends BaseActivity implements CallInterface {
 
@@ -28,8 +29,13 @@ public class MainActivity extends BaseActivity implements CallInterface {
     private Button iniciarSesion, crearCuenta, reiniciarContrasenya;
     private String autenticar;
     private Usuario usuarioGuardado;
-    
-    
+
+    /**
+     * Método llamado cuando se crea la actividad.
+     * Se inicializan las vistas y se configuran los listeners de los botones.
+     *
+     * @param savedInstanceState Información de estado anterior de la actividad, si está disponible.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,23 +100,25 @@ public class MainActivity extends BaseActivity implements CallInterface {
 
     }
 
+    /**
+     * Método de interfaz sin implementación en esta clase.
+     */
     @Override
     public void doInBackground() {
     }
 
-
+    /**
+     * Método de interfaz sin implementación en esta clase.
+     */
     @Override
     public void doInUI() {
     }
 
 
     /**
-     * Usa las credenciales introducidas en la primera actividad para iniciar sesión.
-     * Si el usuario no existe o se introduce una contraseña incorrecta se mostrará un mensaje indicandolo.
-     */
-
-    /**
      * Inicia una actividad para cambiar la contraseña del usuario introducido si existe.
+     *
+     * @param view La vista que ha sido clicada para iniciar la actividad.
      */
     public void reiniciarContrasenyaFunction(View view) {
         Intent intent = new Intent(this, ReiniciarContrasenyaActivity.class);

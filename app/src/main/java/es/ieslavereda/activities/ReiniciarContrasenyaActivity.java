@@ -11,6 +11,11 @@ import es.ieslavereda.activities.model.usuario.Usuario;
 import es.ieslavereda.base.BaseActivity;
 import es.ieslavereda.base.CallInterface;
 
+/**
+ * Actividad para reiniciar la contraseña de un usuario existente.
+ * Esta actividad permite que un usuario ingrese su nombre de usuario y una nueva contraseña.
+ * La nueva contraseña se verifica al confirmarla y se actualiza en la base de datos si el usuario existe.
+ */
 public class ReiniciarContrasenyaActivity extends BaseActivity implements CallInterface {
 
     private EditText nombreUsuario;
@@ -20,6 +25,12 @@ public class ReiniciarContrasenyaActivity extends BaseActivity implements CallIn
     private Button cancelar;
     private int comprobado;
 
+    /**
+     * Método llamado cuando se crea la actividad.
+     * Se inicializan las vistas y se configuran los listeners de los botones.
+     *
+     * @param savedInstanceState Información de estado anterior de la actividad, si está disponible.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,11 +75,17 @@ public class ReiniciarContrasenyaActivity extends BaseActivity implements CallIn
 
     }
 
+    /**
+     * Método de interfaz sin implementación en esta clase.
+     */
     @Override
     public void doInBackground() {
 
     }
 
+    /**
+     * Método de interfaz sin implementación en esta clase.
+     */
     @Override
     public void doInUI() {
 

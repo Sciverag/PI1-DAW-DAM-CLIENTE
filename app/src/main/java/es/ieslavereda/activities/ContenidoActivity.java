@@ -27,9 +27,10 @@ import es.ieslavereda.activities.model.MiRecyclerView;
 import es.ieslavereda.base.CallInterface;
 
 /**
- * @author
+ * Actividad que muestra el contenido de la BBDD.
+ * Permite filtrar por tipo de contenido y visualizar los detalles del contenido seleccionado.
+ *
  * @since 2024-05-13
- * Actividad que muestra el contenido de la BBDD
  */
 public class ContenidoActivity extends BaseActivity implements CallInterface, View.OnClickListener {
 
@@ -45,6 +46,14 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
     private String tipo,tagUsuario;
     private int id;
 
+    /**
+     * Llamado cuando la actividad es creada por primera vez. Aquí es donde debes hacer toda la configuración
+     * estática normal: crear vistas, enlazar datos a listas, etc.
+     *
+     * @param savedInstanceState Si la actividad está siendo re-inicializada después de haber sido previamente
+     *                           apagada, entonces este Bundle contiene los datos que más recientemente suministró
+     *                           en onSaveInstanceState(Bundle). Nota: De lo contrario, es null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -140,11 +149,19 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
 
     }
 
+    /**
+     * Obtiene los datos del contenido en segundo plano.
+     * Este método se llama en un hilo de fondo para realizar operaciones de red.
+     */
     @Override
     public void doInBackground() {
         contenido = Connector.getConector().getAsList(Pelicula.class, path);
     }
 
+    /**
+     * Actualiza la interfaz de usuario con los datos del contenido obtenidos.
+     * Este método se llama en el hilo de la interfaz de usuario para actualizar las vistas con los datos obtenidos en doInBackground.
+     */
     @Override
     public void doInUI() {
         hideProgress();
@@ -154,6 +171,9 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
         listaContenido.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    /**
+     * Enumeración para los tipos de contenido y sus rutas correspondientes.
+     */
     public enum TipoContenidoENUM {
         PELICULA("Pelicula", "contenido/pelicula/"),
         CORTO("Corto", "contenido/corto/"),
@@ -180,6 +200,11 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
         }
     }
 
+    /**
+     * Método llamado cuando una vista ha sido clicada.
+     *
+     * @param v La vista que fue clicada.
+     */
     @Override
     public void onClick(View v) {
         int position = listaContenido.getChildAdapterPosition(v);

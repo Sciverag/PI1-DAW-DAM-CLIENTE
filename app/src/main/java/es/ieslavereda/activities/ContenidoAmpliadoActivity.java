@@ -28,6 +28,14 @@ import es.ieslavereda.base.BaseActivity;
 import es.ieslavereda.base.CallInterface;
 import es.ieslavereda.base.ImageDownloader;
 
+/**
+ * Esta actividad muestra información detallada sobre un contenido, ya sea una película, un cortometraje o una serie.
+ * Los usuarios pueden ver detalles como el título, la descripción, la fecha de estreno, el precio, la duración, el director, el reparto y la disponibilidad.
+ * Para las series, también se muestra una lista de episodios.
+ *
+ * La actividad permite a los usuarios agregar películas y cortometrajes a su carrito de compras.
+ * Para las series, los usuarios pueden hacer clic en episodios individuales para ver información detallada sobre ellos.
+ */
 public class ContenidoAmpliadoActivity extends BaseActivity implements CallInterface, View.OnClickListener  {
 
     private TextView titulo, descripcion, fecha, precio, duracion, director, reparto, disponibleHasta;
@@ -42,6 +50,14 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
     private int id;
     private float precioContenido;
 
+    /**
+     * Llamado cuando la actividad es creada por primera vez. Aquí es donde debes hacer toda la configuración
+     * estática normal: crear vistas, enlazar datos a listas, etc.
+     *
+     * @param savedInstanceState Si la actividad está siendo re-inicializada después de haber sido previamente
+     *                           apagada, entonces este Bundle contiene los datos que más recientemente suministró
+     *                           en onSaveInstanceState(Bundle). Nota: De lo contrario, es null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +84,12 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
         });
     }
 
+    /**
+     * Método llamado cuando se hace clic en un elemento del RecyclerView.
+     * Abre la actividad del Capítulo correspondiente.
+     *
+     * @param view La vista que se ha clicado.
+     */
     @Override
     public void onClick(View view) {
         int position = listaContenido.getChildAdapterPosition(view);
@@ -76,6 +98,10 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
         startActivity(intent);
     }
 
+    /**
+     * Realiza tareas en segundo plano, como obtener datos de una API.
+     * Obtiene los detalles del contenido según el ID y el tipo (película, corto o serie).
+     */
     @Override
     public void doInBackground() {
         id = getIntent().getExtras().getInt("id");
@@ -92,6 +118,10 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
         }
     }
 
+    /**
+     * Actualiza la interfaz de usuario con los detalles del contenido obtenidos en doInBackground().
+     * Dependiendo del tipo de contenido (película, corto o serie), muestra información diferente.
+     */
     @Override
     public void doInUI() {
         if (contenido!=null) {

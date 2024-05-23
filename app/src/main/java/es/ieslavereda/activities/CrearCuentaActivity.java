@@ -14,9 +14,12 @@ import es.ieslavereda.base.BaseActivity;
 import es.ieslavereda.base.CallInterface;
 
 /**
- * @author
- * @since 2024-05-13
  * Actividad para crear una nueva cuenta de usuario.
+ * Esta actividad permite que los usuarios creen una nueva cuenta proporcionando su información básica como nombre de usuario, contraseña, email, nombre y apellido.
+ * Al hacer clic en el botón "Crear cuenta", se verifica la coincidencia de contraseñas y se comprueba si el nombre de usuario ya existe.
+ * Si el nombre de usuario no existe y las contraseñas coinciden, se crea la cuenta de usuario y se redirige a la actividad anterior.
+ * Si el nombre de usuario ya existe, se muestra un mensaje de error.
+ * Si las contraseñas no coinciden, se muestra un mensaje de error.
  */
 public class CrearCuentaActivity extends BaseActivity implements CallInterface {
 
@@ -27,6 +30,12 @@ public class CrearCuentaActivity extends BaseActivity implements CallInterface {
     private Usuario login;
     private Usuario usuario;
 
+    /**
+     * Método llamado cuando se crea la actividad.
+     * Se inicializan las vistas y se configuran los listeners de los botones.
+     *
+     * @param savedInstanceState Información de estado anterior de la actividad, si está disponible.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,11 +100,17 @@ public class CrearCuentaActivity extends BaseActivity implements CallInterface {
         });
     }
 
+    /**
+     * Método de interfaz sin implementación en esta clase.
+     */
     @Override
     public void doInBackground() {
 
     }
 
+    /**
+     * Método de interfaz sin implementación en esta clase.
+     */
     @Override
     public void doInUI() {
 
