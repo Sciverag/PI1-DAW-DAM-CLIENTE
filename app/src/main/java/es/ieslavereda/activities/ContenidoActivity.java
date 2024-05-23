@@ -145,8 +145,6 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
         contenido = Connector.getConector().getAsList(Pelicula.class, path);
     }
 
-
-
     @Override
     public void doInUI() {
         hideProgress();

@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import es.ieslavereda.API.Connector;
 import es.ieslavereda.MiraVereda.R;
+import es.ieslavereda.activities.model.CarroCompra;
 import es.ieslavereda.activities.model.contenido.Capitulo;
 import es.ieslavereda.base.BaseActivity;
 
@@ -26,7 +28,7 @@ public class CapituloActivity extends BaseActivity {
         reparto = findViewById(R.id.textViewRepartoCapitulo);
         temporada = findViewById(R.id.textViewTemporada);
 
-        capitulo = (Capitulo) getIntent().getExtras().get("capitulo");
+        capitulo = Connector.getConector().post(Capitulo.class, null, "carro/&user=tag&idCont="+getIntent().getExtras().getInt("id"));
 
         titulo.setText(capitulo.getTitulo());
         descripcion.setText(capitulo.getDescripcion());

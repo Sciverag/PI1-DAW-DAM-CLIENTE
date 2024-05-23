@@ -1,5 +1,7 @@
 package es.ieslavereda.activities;
 
+import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,8 @@ import es.ieslavereda.MiraVereda.R;
 import es.ieslavereda.activities.model.CarroCompra;
 import es.ieslavereda.activities.model.Contenido;
 import es.ieslavereda.activities.model.MiRecyclerView;
+import es.ieslavereda.activities.model.MiRecyclerViewCapitulos;
+import es.ieslavereda.activities.model.MiRecyclerViewCarrito;
 import es.ieslavereda.activities.model.contenido.Capitulo;
 import es.ieslavereda.activities.model.contenido.Corto;
 import es.ieslavereda.activities.model.contenido.Pelicula;
@@ -31,7 +35,7 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
     private Button anyadirCarrito, volver;
     private RatingBar puntuacionUsuario;
     private RecyclerView listaContenido;
-    private MiRecyclerView adaptador;
+    private MiRecyclerViewCapitulos adaptador;
     private Contenido contenido;
     private Serie contenidoSerie;
     private List<Capitulo> capitulos;
@@ -66,7 +70,13 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
 
     @Override
     public void onClick(View view) {
-
+        int position = listaContenido.getChildAdapterPosition(view);
+        Intent intent = new Intent(this, CapituloActivity.class);
+        int id = 0;
+        Capitulo capitulo = (Paint.Cap) contenido.get(position);
+        id = contenidoPasar.getId();
+        intent.putExtra("id", id);
+        startActivity(intent);
     }
 
     @Override
@@ -116,6 +126,9 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
             String disponibilidad = contenidoSerie.getDisponible_hasta().toString();
             disponibleHasta.setText(disponibilidad.substring(disponibilidad.length() - 7));
             puntuacionUsuario.setVisibility(View.GONE);
+            adaptador = new MiRecyclerViewCapitulos(this, capitulos);
+            listaContenido.setAdapter(adaptador);
+            listaContenido.setOnClickListener(this);
         }
     }
 }
