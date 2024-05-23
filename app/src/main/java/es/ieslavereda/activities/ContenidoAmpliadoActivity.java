@@ -72,10 +72,7 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
     public void onClick(View view) {
         int position = listaContenido.getChildAdapterPosition(view);
         Intent intent = new Intent(this, CapituloActivity.class);
-        int id = 0;
-        Capitulo capitulo = (Paint.Cap) contenido.get(position);
-        id = contenidoPasar.getId();
-        intent.putExtra("id", id);
+        intent.putExtra("id", capitulos.get(position).getId());
         startActivity(intent);
     }
 

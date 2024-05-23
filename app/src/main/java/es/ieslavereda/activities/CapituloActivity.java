@@ -9,8 +9,9 @@ import es.ieslavereda.MiraVereda.R;
 import es.ieslavereda.activities.model.CarroCompra;
 import es.ieslavereda.activities.model.contenido.Capitulo;
 import es.ieslavereda.base.BaseActivity;
+import es.ieslavereda.base.CallInterface;
 
-public class CapituloActivity extends BaseActivity {
+public class CapituloActivity extends BaseActivity implements CallInterface {
 
     private TextView titulo, descripcion, fecha, precio, duracion, director, reparto, temporada;
     private Capitulo capitulo;
@@ -28,8 +29,15 @@ public class CapituloActivity extends BaseActivity {
         reparto = findViewById(R.id.textViewRepartoCapitulo);
         temporada = findViewById(R.id.textViewTemporada);
 
-        capitulo = Connector.getConector().post(Capitulo.class, null, "carro/&user=tag&idCont="+getIntent().getExtras().getInt("id"));
+    }
 
+    @Override
+    public void doInBackground() {
+        capitulo = Connector.getConector().get(Capitulo.class, "contenido/capitulo/"+getIntent().getExtras().getInt("id"));
+    }
+
+    @Override
+    public void doInUI() {
         titulo.setText(capitulo.getTitulo());
         descripcion.setText(capitulo.getDescripcion());
         fecha.setText(capitulo.getFechaEstreno().toString().substring(capitulo.getFechaEstreno().toString().length()-7));
