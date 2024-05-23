@@ -19,9 +19,9 @@ public class CapituloActivity extends BaseActivity {
         setContentView(R.layout.activity_capitulo);
         titulo = findViewById(R.id.textViewTituloCapitulo);
         descripcion = findViewById(R.id.textViewDescripcionCapitulo);
-        fecha = findViewById(R.id.textViewFechaCapitulo);
+        fecha = findViewById(R.id.textViewTemporada);
         precio = findViewById(R.id.textViewPrecioCapitulo);
-        duracion = findViewById(R.id.textViewNumeroEps);
+        duracion = findViewById(R.id.textViewDuracionCapitulo);
         director = findViewById(R.id.textViewDirectorCapitulo);
         reparto = findViewById(R.id.textViewRepartoCapitulo);
         temporada = findViewById(R.id.textViewTemporada);

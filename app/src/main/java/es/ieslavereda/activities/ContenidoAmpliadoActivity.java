@@ -7,12 +7,15 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 import es.ieslavereda.API.Connector;
 import es.ieslavereda.MiraVereda.R;
 import es.ieslavereda.activities.model.CarroCompra;
 import es.ieslavereda.activities.model.Contenido;
+import es.ieslavereda.activities.model.MiRecyclerView;
 import es.ieslavereda.activities.model.contenido.Capitulo;
 import es.ieslavereda.activities.model.contenido.Corto;
 import es.ieslavereda.activities.model.contenido.Pelicula;
@@ -27,6 +30,8 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
     private ImageView imagen;
     private Button anyadirCarrito, volver;
     private RatingBar puntuacionUsuario;
+    private RecyclerView listaContenido;
+    private MiRecyclerView adaptador;
     private Contenido contenido;
     private Serie contenidoSerie;
     private List<Capitulo> capitulos;
@@ -49,9 +54,9 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
         anyadirCarrito = findViewById(R.id.buttonComprar);
         volver = findViewById(R.id.buttonVolver);
         puntuacionUsuario = findViewById(R.id.puntuacionUsuario);
+        listaContenido = findViewById(R.id.episodios);
 
         executeCall(this);
-       // anyadirCarrito.setOnClickListener();
 
         volver.setOnClickListener(view -> finish());
         anyadirCarrito.setOnClickListener(view -> {
@@ -97,6 +102,7 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
                 String fecha2 =  disponibilidad.substring(4,10) + " " + disponibilidad.substring(disponibilidad.length()-4);
                 disponibleHasta.setText(fecha2);
             }
+
 
         } else if (contenidoSerie!=null) {
             titulo.setText(contenidoSerie.getTitulo());

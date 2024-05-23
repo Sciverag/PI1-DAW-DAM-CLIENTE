@@ -9,7 +9,6 @@ import android.widget.Toast;
 import es.ieslavereda.API.Connector;
 import es.ieslavereda.MiraVereda.R;
 
-import es.ieslavereda.activities.model.Root;
 import es.ieslavereda.activities.model.usuario.Usuario;
 import es.ieslavereda.base.BaseActivity;
 import es.ieslavereda.base.CallInterface;
@@ -23,7 +22,6 @@ public class CrearCuentaActivity extends BaseActivity implements CallInterface {
 
     private EditText nombreUsuario, contrasenya, confirmarContrasenya, email, nombre, apellido;
     private Button crearCuenta;
-    private Root root;
     private Button cancelar;
 
     private Usuario login;

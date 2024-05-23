@@ -16,6 +16,7 @@
             android:id="@+id/buttonComprar"
             android:layout_width="45dp"
             android:layout_height="45dp"
+            android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/boton_custom"
             android:drawableStart="@drawable/icono_carrito_blanco"
@@ -23,7 +24,7 @@
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textViewDuracionCompleto"
-            app:layout_constraintTop_toTopOf="@+id/buttonVolver" />
+            app:layout_constraintTop_toBottomOf="@+id/episodios" />
 
         <Button
             android:id="@+id/buttonVolver"
@@ -37,7 +38,7 @@
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textViewPrecioCompleto"
-            app:layout_constraintTop_toBottomOf="@+id/textViewRepartoCompleto" />
+            app:layout_constraintTop_toBottomOf="@+id/episodios" />
 
         <ImageView
             android:id="@+id/imagenCompleto"
@@ -160,6 +161,15 @@
             app:layout_constraintEnd_toEndOf="@+id/textViewDescripcionCompleto"
             app:layout_constraintStart_toStartOf="@+id/textViewDescripcionCompleto"
             app:layout_constraintTop_toBottomOf="@+id/textViewDescripcionCompleto" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/episodios"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/textViewRepartoCompleto"
+            app:layout_constraintStart_toStartOf="@+id/textViewRepartoCompleto"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRepartoCompleto" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

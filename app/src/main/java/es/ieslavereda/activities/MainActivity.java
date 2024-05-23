@@ -10,16 +10,11 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import es.ieslavereda.API.Connector;
 import es.ieslavereda.MiraVereda.R;
-import es.ieslavereda.activities.model.Root;
 import es.ieslavereda.activities.model.usuario.Usuario;
 import es.ieslavereda.base.BaseActivity;
 import es.ieslavereda.base.CallInterface;
-import es.ieslavereda.base.Parameters;
 
 
 /**
@@ -31,7 +26,6 @@ public class MainActivity extends BaseActivity implements CallInterface {
 
     private EditText usuario, contrasenya;
     private Button iniciarSesion, crearCuenta, reiniciarContrasenya;
-    private Root root;
     private String autenticar;
     private Usuario usuarioGuardado;
     
