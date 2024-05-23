@@ -17,6 +17,9 @@ import es.ieslavereda.activities.model.contenido.Capitulo;
 import es.ieslavereda.base.ImageDownloader;
 
 
+/**
+ * Adaptador personalizado para RecyclerView que muestra una lista de capítulos de una serie.
+ */
 public class MiRecyclerViewCapitulos extends RecyclerView.Adapter<MiRecyclerViewCapitulos.ViewHolder> {
 
     private LayoutInflater layoutInflater;
@@ -24,11 +27,22 @@ public class MiRecyclerViewCapitulos extends RecyclerView.Adapter<MiRecyclerView
 
     private List<Capitulo> capitulos;
 
+    /**
+     * Constructor de la clase.
+     *
+     * @param context   El contexto de la aplicación.
+     * @param capitulos La lista de capítulos a mostrar en el RecyclerView.
+     */
     public MiRecyclerViewCapitulos(Context context, List<Capitulo> capitulos){
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.capitulos = capitulos;
     }
 
+    /**
+     * Establece el Listener de clics para los elementos del RecyclerView.
+     *
+     * @param onClickListener El Listener de clics.
+     */
     public void setOnClickListener(View.OnClickListener onClickListener){
         this.onClickListener = onClickListener;
     }
@@ -60,6 +74,9 @@ public class MiRecyclerViewCapitulos extends RecyclerView.Adapter<MiRecyclerView
         return capitulos.size();
     }
 
+    /**
+     * Clase interna ViewHolder que representa cada elemento de la lista en el RecyclerView.
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private ImageView imagen;
         private TextView titulo, valoracion, fecha, numero;
@@ -73,6 +90,12 @@ public class MiRecyclerViewCapitulos extends RecyclerView.Adapter<MiRecyclerView
         }
     }
 
+    /**
+     * Calcula la representación de estrellas para la puntuación media del capítulo.
+     *
+     * @param puntMedia La puntuación media del capítulo.
+     * @return La representación de estrellas.
+     */
     private String estrellasPuntuacion(float puntMedia) {
         String estrellas = "";
         float decimal = (puntMedia - (int) puntMedia);

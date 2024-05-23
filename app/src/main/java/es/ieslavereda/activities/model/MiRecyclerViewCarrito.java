@@ -14,12 +14,21 @@ import java.util.List;
 import es.ieslavereda.MiraVereda.R;
 import es.ieslavereda.base.ImageDownloader;
 
+/**
+ * Adaptador personalizado para RecyclerView que muestra una lista de productos en el carrito de compras.
+ */
 public class MiRecyclerViewCarrito extends RecyclerView.Adapter<MiRecyclerViewCarrito.ViewHolder> {
 
     private List<Contenido> contenidos;
     private Context context;
     private LayoutInflater layoutInflater;
 
+    /**
+     * Constructor de la clase.
+     *
+     * @param contenidos La lista de contenidos a mostrar en el RecyclerView.
+     * @param context    El contexto de la aplicación.
+     */
     public MiRecyclerViewCarrito(List contenidos, Context context) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.contenidos = contenidos;
@@ -44,6 +53,9 @@ public class MiRecyclerViewCarrito extends RecyclerView.Adapter<MiRecyclerViewCa
         return contenidos.size();
     }
 
+    /**
+     * Clase interna ViewHolder que representa cada elemento de la lista en el RecyclerView.
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textViewNombre;

@@ -11,13 +11,16 @@ import es.ieslavereda.API.Connector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
+/**
+ * Clase BaseActivity que extiende AppCompatActivity y proporciona funcionalidades comunes para las actividades de la aplicación.
+ */
 public class BaseActivity extends AppCompatActivity {
 
     protected Connector connector;
     protected ExecutorService executor = Executors.newSingleThreadExecutor();
     protected Handler handler = new Handler(Looper.getMainLooper());
     protected MyProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,11 @@ public class BaseActivity extends AppCompatActivity {
         progressBar = new MyProgressBar(this);
     }
 
+    /**
+     * Ejecuta una tarea en un hilo de fondo y luego ejecuta otra tarea en el hilo principal.
+     *
+     * @param callInterface La interfaz que contiene los métodos doInBackground() y doInUI() que representan las tareas a realizar en los hilos de fondo y principal respectivamente.
+     */
     protected void executeCall(CallInterface callInterface){
         executor.execute(() -> {
             callInterface.doInBackground();
@@ -36,17 +44,26 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Muestra la barra de progreso.
+     */
     public void showProgress(){
         progressBar.show();
     }
 
+    /**
+     * Oculta la barra de progreso.
+     */
     public void hideProgress(){
         progressBar.hide();
     }
 
 
-    // Sobreescribimos el metodo para asociar a la barra de progreso al ContraintLayout o RelativeLayout
-    // y asi poder centrarla y manipular la visibilidad del resto de componentes del ViewGroup
+    /**
+     * Sobreescribe el método para asociar la barra de progreso al ConstraintLayout o RelativeLayout y así poder centrarla y manipular la visibilidad del resto de componentes del ViewGroup.
+     *
+     * @param layout El identificador del recurso del diseño de la actividad.
+     */
     @Override
     public void setContentView(int layout){
         super.setContentView(layout);

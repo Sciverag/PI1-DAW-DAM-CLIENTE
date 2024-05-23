@@ -15,7 +15,9 @@ import java.util.List;
 import es.ieslavereda.MiraVereda.R;
 import es.ieslavereda.base.ImageDownloader;
 
-
+/**
+ * Adaptador personalizado para RecyclerView que muestra una lista de contenido genérico.
+ */
 public class MiRecyclerView extends RecyclerView.Adapter<MiRecyclerView.ViewHolder> {
 
     private LayoutInflater layoutInflater;
@@ -23,11 +25,22 @@ public class MiRecyclerView extends RecyclerView.Adapter<MiRecyclerView.ViewHold
 
     private List<Contenido> contenido;
 
+    /**
+     * Constructor de la clase.
+     *
+     * @param context   El contexto de la aplicación.
+     * @param contenido La lista de contenido a mostrar en el RecyclerView.
+     */
     public MiRecyclerView(Context context, List contenido){
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.contenido = contenido;
     }
 
+    /**
+     * Establece el Listener de clics para los elementos del RecyclerView.
+     *
+     * @param onClickListener El Listener de clics.
+     */
     public void setOnClickListener(View.OnClickListener onClickListener){
         this.onClickListener = onClickListener;
     }
@@ -62,6 +75,9 @@ public class MiRecyclerView extends RecyclerView.Adapter<MiRecyclerView.ViewHold
         return contenido.size();
     }
 
+    /**
+     * Clase interna ViewHolder que representa cada elemento de la lista en el RecyclerView.
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private ImageView imagen;
         private TextView titulo, valoracion, fecha, numero;
@@ -75,6 +91,12 @@ public class MiRecyclerView extends RecyclerView.Adapter<MiRecyclerView.ViewHold
         }
     }
 
+    /**
+     * Calcula la representación de estrellas para la puntuación media del contenido.
+     *
+     * @param puntMedia La puntuación media del contenido.
+     * @return La representación de estrellas.
+     */
     private String estrellasPuntuacion(float puntMedia) {
         String estrellas = "";
         float decimal = (puntMedia - (int) puntMedia);

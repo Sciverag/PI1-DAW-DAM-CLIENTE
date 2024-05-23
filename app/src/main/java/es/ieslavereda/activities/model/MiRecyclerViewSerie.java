@@ -16,7 +16,9 @@ import es.ieslavereda.MiraVereda.R;
 import es.ieslavereda.activities.model.contenido.Serie;
 import es.ieslavereda.base.ImageDownloader;
 
-
+/**
+ * Adaptador personalizado para RecyclerView que muestra una lista de series.
+ */
 public class MiRecyclerViewSerie extends RecyclerView.Adapter<MiRecyclerViewSerie.ViewHolder> {
 
     private LayoutInflater layoutInflater;
@@ -24,11 +26,22 @@ public class MiRecyclerViewSerie extends RecyclerView.Adapter<MiRecyclerViewSeri
 
     private List<Serie> contenido;
 
+    /**
+     * Constructor de la clase.
+     *
+     * @param context   El contexto de la aplicación.
+     * @param contenido La lista de series a mostrar en el RecyclerView.
+     */
     public MiRecyclerViewSerie(Context context, List contenido){
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.contenido = contenido;
     }
 
+    /**
+     * Establece el Listener de clics para los elementos del RecyclerView.
+     *
+     * @param onClickListener El Listener de clics.
+     */
     public void setOnClickListener(View.OnClickListener onClickListener){
         this.onClickListener = onClickListener;
     }
@@ -56,6 +69,9 @@ public class MiRecyclerViewSerie extends RecyclerView.Adapter<MiRecyclerViewSeri
         return contenido.size();
     }
 
+    /**
+     * Clase interna ViewHolder que representa cada elemento de la lista en el RecyclerView.
+     */
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private TextView titulo, numero;
         private ImageView imagen;

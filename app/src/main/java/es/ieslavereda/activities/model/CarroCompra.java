@@ -14,23 +14,49 @@ public class CarroCompra {
      */
     private int idUsuario;
 
+    /**
+     * Constructor de la clase CarroCompra.
+     *
+     * @param id El ID del carro de compra.
+     * @param idUsuario El ID del usuario al que pertenece el carro de compra.
+     */
     public CarroCompra(int id, int idUsuario) {
         this.id = id;
         this.idUsuario = idUsuario;
     }
 
+    /**
+     * Obtiene el ID del carro de compra.
+     *
+     * @return El ID del carro de compra.
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Obtiene el ID del usuario al que pertenece el carro de compra.
+     *
+     * @return El ID del usuario al que pertenece el carro de compra.
+     */
     public int getIdUsuario() {
         return idUsuario;
     }
 
+    /**
+     * Establece el ID del carro de compra.
+     *
+     * @param id El ID del carro de compra.
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Establece el ID del usuario al que pertenece el carro de compra.
+     *
+     * @param idUsuario El ID del usuario al que pertenece el carro de compra.
+     */
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
     }

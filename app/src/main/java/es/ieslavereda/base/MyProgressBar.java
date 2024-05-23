@@ -10,6 +10,9 @@ import android.widget.RelativeLayout;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
+/**
+ * Clase que extiende ProgressBar para proporcionar una barra de progreso personalizada y centrada en un ViewGroup específico.
+ */
 public class MyProgressBar extends ProgressBar {
 
     private ViewGroup rootView;
@@ -26,13 +29,20 @@ public class MyProgressBar extends ProgressBar {
         super(context, attrs, defStyleAttr);
     }
 
-
+    /**
+     * Inicializa la barra de progreso y la agrega al ViewGroup especificado.
+     *
+     * @param rootView El ViewGroup al que se agregará la barra de progreso.
+     */
     public void initControl(ViewGroup rootView){
         this.rootView = rootView;
         center();
         this.rootView.addView(this);
     }
 
+    /**
+     * Muestra la barra de progreso y oculta los demás hijos del ViewGroup.
+     */
     public void show(){
 
         for(int i = 0; i <rootView.getChildCount(); i++){
@@ -44,6 +54,9 @@ public class MyProgressBar extends ProgressBar {
         }
     }
 
+    /**
+     * Oculta la barra de progreso y muestra los demás hijos del ViewGroup.
+     */
     public void hide() {
         for (int i = 0; i < rootView.getChildCount(); i++) {
             View child = rootView.getChildAt(i);
@@ -54,6 +67,9 @@ public class MyProgressBar extends ProgressBar {
         }
     }
 
+    /**
+     * Centra la barra de progreso en el ViewGroup.
+     */
     public void center(){
         if (rootView instanceof ConstraintLayout) {
             ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams( ConstraintLayout.LayoutParams.WRAP_CONTENT,

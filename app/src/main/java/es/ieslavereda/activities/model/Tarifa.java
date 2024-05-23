@@ -15,23 +15,49 @@ public class Tarifa {
      */
     private Float precio;
 
+    /**
+     * Constructor de la clase Tarifa.
+     *
+     * @param codigo El código de la tarifa.
+     * @param precio El precio de la tarifa.
+     */
     public Tarifa(int codigo, Float precio) {
         this.codigo = codigo;
         this.precio = precio;
     }
 
+    /**
+     * Método getter para obtener el código de la tarifa.
+     *
+     * @return El código de la tarifa.
+     */
     public int getCodigo() {
         return codigo;
     }
 
+    /**
+     * Método getter para obtener el precio de la tarifa.
+     *
+     * @return El precio de la tarifa.
+     */
     public Float getPrecio() {
         return precio;
     }
 
+    /**
+     * Método setter para establecer el código de la tarifa.
+     *
+     * @param codigo El código de la tarifa.
+     */
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
+    /**
+     * Método setter para establecer el precio de la tarifa.
+     *
+     * @param precio El precio de la tarifa.
+     */
     public void setPrecio(Float precio) {
         this.precio = precio;
     }
@@ -60,6 +86,11 @@ public class Tarifa {
         return codigo;
     }
 
+    /**
+     * Retorna una representación en cadena de texto de la tarifa.
+     *
+     * @return Una cadena que representa la tarifa.
+     */
     @Override
     public String toString() {
         return "Tarifa{" +

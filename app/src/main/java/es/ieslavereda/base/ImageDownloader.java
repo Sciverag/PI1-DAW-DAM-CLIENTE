@@ -12,15 +12,33 @@ import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
+/**
+ * Clase utilitaria para descargar imágenes y mostrarlas en ImageViews.
+ */
 public class ImageDownloader {
 
     private static RequestQueue colaPeticiones ;
     private final static String TAG = ImageDownloader.class.getName();
 
+    /**
+     * Descarga una imagen de la URL especificada y la muestra en el ImageView utilizando la biblioteca Picasso.
+     *
+     * @param url       La URL de la imagen a descargar.
+     * @param imageView El ImageView donde se mostrará la imagen.
+     */
     public static void downloadImage(String url, ImageView imageView){
         Picasso.get().load(url).into(imageView);
     }
 
+    /**
+     * Descarga una imagen de la URL especificada y la muestra en el ImageView utilizando la biblioteca Volley.
+     * Si ocurre un error al descargar la imagen, se muestra una imagen predeterminada.
+     *
+     * @param context        El contexto de la aplicación.
+     * @param url            La URL de la imagen a descargar.
+     * @param imageView      El ImageView donde se mostrará la imagen.
+     * @param defaultDrawable El recurso de imagen predeterminado a mostrar en caso de error.
+     */
     public static void downloadImage(Context context, String url, ImageView imageView, int defaultDrawable){
         ImageRequest peticion = new ImageRequest(
                 url,
@@ -39,6 +57,12 @@ public class ImageDownloader {
         getRequestQueue(context).add(peticion);
     }
 
+    /**
+     * Obtiene la cola de peticiones Volley.
+     *
+     * @param context El contexto de la aplicación.
+     * @return La cola de peticiones Volley.
+     */
     private static RequestQueue getRequestQueue(Context context){
         if(colaPeticiones==null)
             colaPeticiones = Volley.newRequestQueue(context);
