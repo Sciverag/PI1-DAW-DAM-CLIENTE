@@ -63,7 +63,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutCrearContrasenyaConfirmacion"
+        android:id="@+id/layoutNuevaContrasenyaConfirmacionReiniciarContrasenya"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="363dp"
         android:layout_height="60dp"
@@ -72,15 +72,15 @@
         app:counterTextColor="@color/white"
         app:helperTextTextColor="@color/white"
         app:hintTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/layoutCrearContrasenya"
-        app:layout_constraintStart_toStartOf="@+id/layoutCrearContrasenya"
-        app:layout_constraintTop_toBottomOf="@+id/layoutCrearContrasenya"
+        app:layout_constraintEnd_toEndOf="@+id/layoutNuevaContrasenyaReiniciarContrasenya"
+        app:layout_constraintStart_toStartOf="@+id/layoutNuevaContrasenyaReiniciarContrasenya"
+        app:layout_constraintTop_toBottomOf="@+id/layoutNuevaContrasenyaReiniciarContrasenya"
         app:placeholderTextColor="@color/white"
         app:prefixTextColor="@color/white"
         app:suffixTextColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextContrasenyaConfirmacion"
+            android:id="@+id/editTextNuevaContrasenyaConfirmacionReiniciarContrasenya"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:drawableLeft="@drawable/icono_contrasenya_blanco"
@@ -91,7 +91,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutCrearUsuario"
+        android:id="@+id/layoutUsuarioReiniciarContrasenya"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="363dp"
         android:layout_height="60dp"
@@ -109,7 +109,7 @@
         app:suffixTextColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextCrearUsuario"
+            android:id="@+id/editTextUsuarioReiniciarContrasenya"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:drawableLeft="@drawable/icono_usuario_blanco"
@@ -119,7 +119,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutCrearContrasenya"
+        android:id="@+id/layoutNuevaContrasenyaReiniciarContrasenya"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="363dp"
         android:layout_height="60dp"
@@ -128,15 +128,15 @@
         app:counterTextColor="@color/white"
         app:helperTextTextColor="@color/white"
         app:hintTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/layoutCrearUsuario"
-        app:layout_constraintStart_toStartOf="@+id/layoutCrearUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/layoutCrearUsuario"
+        app:layout_constraintEnd_toEndOf="@+id/layoutUsuarioReiniciarContrasenya"
+        app:layout_constraintStart_toStartOf="@+id/layoutUsuarioReiniciarContrasenya"
+        app:layout_constraintTop_toBottomOf="@+id/layoutUsuarioReiniciarContrasenya"
         app:placeholderTextColor="@color/white"
         app:prefixTextColor="@color/white"
         app:suffixTextColor="@color/white">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextCrearContrasenya"
+            android:id="@+id/editTextNuevaContrasenyaReiniciarContrasenya"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:drawableLeft="@drawable/icono_contrasenya_blanco"
@@ -156,9 +156,9 @@
         app:counterTextColor="@color/white"
         app:helperTextTextColor="@color/white"
         app:hintTextColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/layoutCrearContrasenyaConfirmacion"
-        app:layout_constraintStart_toStartOf="@+id/layoutCrearContrasenyaConfirmacion"
-        app:layout_constraintTop_toBottomOf="@+id/layoutCrearContrasenyaConfirmacion"
+        app:layout_constraintEnd_toEndOf="@+id/layoutNuevaContrasenyaConfirmacionReiniciarContrasenya"
+        app:layout_constraintStart_toStartOf="@+id/layoutNuevaContrasenyaConfirmacionReiniciarContrasenya"
+        app:layout_constraintTop_toBottomOf="@+id/layoutNuevaContrasenyaConfirmacionReiniciarContrasenya"
         app:placeholderTextColor="@color/white"
         app:prefixTextColor="@color/white"
         app:suffixTextColor="@color/white">
@@ -175,7 +175,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/buttonConfirmarNuevaCuenta"
+        android:id="@+id/buttonConfirmarReiniciarContrasenya"
         android:layout_width="363dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
@@ -190,7 +190,7 @@
         app:shapeAppearance="@style/CardView" />
 
     <Button
-        android:id="@+id/cancelarCrearCuenta"
+        android:id="@+id/cancelarReiniciarContrasenya"
         android:layout_width="363dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -198,9 +198,9 @@
         android:text="CANCELAR"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/buttonConfirmarNuevaCuenta"
-        app:layout_constraintStart_toStartOf="@+id/buttonConfirmarNuevaCuenta"
-        app:layout_constraintTop_toBottomOf="@+id/buttonConfirmarNuevaCuenta"
+        app:layout_constraintEnd_toEndOf="@+id/buttonConfirmarReiniciarContrasenya"
+        app:layout_constraintStart_toStartOf="@+id/buttonConfirmarReiniciarContrasenya"
+        app:layout_constraintTop_toBottomOf="@+id/buttonConfirmarReiniciarContrasenya"
         app:shapeAppearance="@style/CardView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

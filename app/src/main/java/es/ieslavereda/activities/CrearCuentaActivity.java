@@ -31,14 +31,14 @@ public class CrearCuentaActivity extends BaseActivity implements CallInterface {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_cuenta);
-        nombreUsuario = findViewById(R.id.editTextCrearUsuario);
-        contrasenya = findViewById(R.id.editTextCrearContrasenya);
-        confirmarContrasenya = findViewById(R.id.editTextContrasenyaConfirmacion);
+        nombreUsuario = findViewById(R.id.editTextUsuarioReiniciarContrasenya);
+        contrasenya = findViewById(R.id.editTextNuevaContrasenyaReiniciarContrasenya);
+        confirmarContrasenya = findViewById(R.id.editTextNuevaContrasenyaConfirmacionReiniciarContrasenya);
         email = findViewById(R.id.editTextEmail);
         nombre = findViewById(R.id.editTextNombreCrear);
         apellido = findViewById(R.id.editTextApellidoCrear);
-        crearCuenta = findViewById(R.id.buttonConfirmarNuevaCuenta);
-        cancelar = findViewById(R.id.cancelarCrearCuenta);
+        crearCuenta = findViewById(R.id.buttonConfirmarReiniciarContrasenya);
+        cancelar = findViewById(R.id.cancelarReiniciarContrasenya);
 
 
 

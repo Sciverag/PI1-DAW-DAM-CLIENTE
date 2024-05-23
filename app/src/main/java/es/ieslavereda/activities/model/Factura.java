@@ -30,9 +30,9 @@ public class Factura {
     /**
      * El ID del usuario al que pertenece la factura.
      */
-    private int idUsuario;
+    private String idUsuario;
 
-    public Factura(int numero, Date fecha, Double importe_base, Double importe_IVA, int idUsuario) {
+    public Factura(int numero, Date fecha, Double importe_base, Double importe_IVA, String idUsuario) {
         this.numero = numero;
         this.fecha = fecha;
         this.importe_base = importe_base;
@@ -56,7 +56,7 @@ public class Factura {
         return importe_IVA;
     }
 
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
@@ -76,7 +76,7 @@ public class Factura {
         this.importe_IVA = importe_IVA;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
     }
 

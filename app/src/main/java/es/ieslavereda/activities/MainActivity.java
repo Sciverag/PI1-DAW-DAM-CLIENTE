@@ -88,6 +88,10 @@ public class MainActivity extends BaseActivity implements CallInterface {
            }
         });
 
+        reiniciarContrasenya.setOnClickListener(view -> {
+            reiniciarContrasenyaFunction(view);
+        });
+
     }
 
     @Override
@@ -108,12 +112,11 @@ public class MainActivity extends BaseActivity implements CallInterface {
     /**
      * Inicia una actividad para cambiar la contraseña del usuario introducido si existe.
      */
-    public void ReiniciarContrasenya(View view) {
+    public void reiniciarContrasenyaFunction(View view) {
         Intent intent = new Intent(this, ReiniciarContrasenyaActivity.class);
-        intent.putExtra("UsuarioPath", usuarioGuardado.getNombreUsuario());
         ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK) {
-                //Cambiar contraseña del usuario a la introducida
+                Toast.makeText(this, "Cambio de contraseña realizado con exito", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Cambio de contraseña cancelado", Toast.LENGTH_SHORT).show();
             }
