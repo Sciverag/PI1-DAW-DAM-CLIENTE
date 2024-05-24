@@ -53,13 +53,14 @@ public class ReiniciarContrasenyaActivity extends BaseActivity implements CallIn
                 executeCall(new CallInterface() {
                     @Override
                     public void doInBackground() {
-                        comprobado = Connector.getConector().get(Integer.class, "usuario/changePassword/&tag="+nombreUsuario.getText().toString() + "&pass=" + contrasenya.getText().toString());
+                        comprobado = Connector.getConector().put(Integer.class, null, "usuario/changePassword/&tag="+nombreUsuario.getText().toString() + "&pass=" + contrasenya.getText().toString());
                     }
 
                     @Override
                     public void doInUI() {
                         if(comprobado>0){
                             setResult(RESULT_OK);
+                            Toast.makeText(getBaseContext(), "Contraseña reiniciada", Toast.LENGTH_SHORT).show();
                             finish();
                         } else{
                             Toast.makeText(getBaseContext(), "El usuario no existe", Toast.LENGTH_SHORT).show();

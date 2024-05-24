@@ -136,7 +136,6 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
 
                         }
                     });
-
                     adaptador.notifyDataSetChanged();
                 }
                 primera = true;

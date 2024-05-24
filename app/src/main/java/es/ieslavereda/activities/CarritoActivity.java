@@ -67,7 +67,7 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
             executeCall(new CallInterface() {
                 @Override
                 public void doInBackground() {
-                    factura = Connector.getConector().get(Factura.class,"factura/finalizar/"+tagUsuario);
+                    factura = Connector.getConector().put(Factura.class, null,"factura/finalizar/"+tagUsuario);
                 }
 
                 @Override

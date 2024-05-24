@@ -154,7 +154,17 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
             director.setText(contenido.getDirector());
             reparto.setText(contenido.getActores());
             ImageDownloader.downloadImage(contenido.getUrl_image(),imagen);
-            puntuacionUsuario.setOnRatingBarChangeListener((ratingBar, v, b) -> Connector.getConector().post(Float.class, null, "contenido/update/puntuacion/&id=" + id + "&punt=" + puntuacionUsuario.getRating()));
+            puntuacionUsuario.setOnRatingBarChangeListener((ratingBar, v, b) -> executeCall(new CallInterface() {
+                @Override
+                public void doInBackground() {
+                    Connector.getConector().put(Float.class, null, "contenido/update/puntuacion/&id=" + id + "&punt=" + puntuacionUsuario.getRating());
+                }
+
+                @Override
+                public void doInUI() {
+
+                }
+            }));
             if (contenido instanceof Pelicula) {
                 String disponibilidad = ((Pelicula) contenido).getDisponible_hasta().toString();
                 String fecha2 =  disponibilidad.substring(4,10) + " " + disponibilidad.substring(disponibilidad.length()-4);

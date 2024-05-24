@@ -1,6 +1,6 @@
 package es.ieslavereda.activities.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Clase que representa una factura.
