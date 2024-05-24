@@ -61,11 +61,12 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
 
         contenidoCarro = new ArrayList<>();
         buttonFinalizar.setOnClickListener(v -> {
-            factura = Connector.getConector().get(Factura.class,"factura/finalizar/tag");
+            factura = Connector.getConector().get(Factura.class,"factura/finalizar/"+tagUsuario);
             if (factura != null)
                 Toast.makeText(this,"Factura Creada al usuario" +tagUsuario,Toast.LENGTH_SHORT).show();
         });
         buttonVolver.setOnClickListener(view -> finish());
+
     }
 
     /**
@@ -74,7 +75,7 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
     private void actualizarPrecioTotal() {
         totalAmount = 0.0;
         for (Contenido contenido : contenidoCarro) {
-            totalAmount += 8;
+            totalAmount += Connector.getConector().get(Float.class,"contenido/precio/"+contenido.getId());
         }
         textViewTotal.setText("€" + String.format("%.2f", totalAmount));
     }
