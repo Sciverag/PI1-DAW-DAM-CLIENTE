@@ -20,6 +20,7 @@ import es.ieslavereda.activities.model.Contenido;
 import es.ieslavereda.activities.model.Factura;
 import es.ieslavereda.activities.model.LineaFactura;
 import es.ieslavereda.activities.model.MiRecyclerViewCarrito;
+import es.ieslavereda.activities.model.contenido.Corto;
 import es.ieslavereda.activities.model.contenido.Pelicula;
 import es.ieslavereda.base.BaseActivity;
 import es.ieslavereda.base.CallInterface;
@@ -35,7 +36,7 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
     private Button buttonFinalizar,buttonVolver;
     private MiRecyclerViewCarrito adaptadorRecyclerViewCarrito;
     private List<LineaFactura> lineasCarrito;
-    private double totalAmount = 0.0;
+    private Float totalAmount;
     private String tagUsuario;
     private List<Contenido> contenidoCarro;
     private Factura factura;
@@ -57,13 +58,26 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
         textViewTotal = findViewById(R.id.textViewTotal);
         buttonFinalizar = findViewById(R.id.buttonFinalizar);
         buttonVolver = findViewById(R.id.buttonVolverCarrito);
-
-
         contenidoCarro = new ArrayList<>();
+        tagUsuario = getIntent().getExtras().getString("tag_usuario");
+        executeCall(this);
+
+
         buttonFinalizar.setOnClickListener(v -> {
-            factura = Connector.getConector().get(Factura.class,"factura/finalizar/"+tagUsuario);
-            if (factura != null)
-                Toast.makeText(this,"Factura Creada al usuario" +tagUsuario,Toast.LENGTH_SHORT).show();
+            executeCall(new CallInterface() {
+                @Override
+                public void doInBackground() {
+                    factura = Connector.getConector().get(Factura.class,"factura/finalizar/"+tagUsuario);
+                }
+
+                @Override
+                public void doInUI() {
+                    if (factura != null)
+                        Toast.makeText(getBaseContext(),"Factura Creada al usuario" +tagUsuario,Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
         });
         buttonVolver.setOnClickListener(view -> finish());
 
@@ -73,11 +87,21 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
      * Actualiza el precio total del carrito sumando el precio de todos los contenidos en el carrito.
      */
     private void actualizarPrecioTotal() {
-        totalAmount = 0.0;
-        for (Contenido contenido : contenidoCarro) {
-            totalAmount += Connector.getConector().get(Float.class,"contenido/precio/"+contenido.getId());
-        }
-        textViewTotal.setText("€" + String.format("%.2f", totalAmount));
+        totalAmount = 0f;
+        executeCall(new CallInterface() {
+            @Override
+            public void doInBackground() {
+                for (Contenido contenido : contenidoCarro) {
+                    //totalAmount += Connector.getConector().get(Float.class,"contenido/precio/"+contenido.getId());
+                    totalAmount += 8f;
+                }
+            }
+
+            @Override
+            public void doInUI() {
+                textViewTotal.setText("€" + String.format("%.2f", totalAmount));
+            }
+        });
     }
 
     /**
@@ -96,12 +120,11 @@ public class CarritoActivity extends BaseActivity implements CallInterface, View
      */
     @Override
     public void doInBackground() {
-        tagUsuario = getIntent().getExtras().getString("tag_usuario");
         CarroCompra carro = Connector.getConector().get(CarroCompra.class,"carro/&user="+tagUsuario);
         int idCarro = carro.getId();
-        lineasCarrito = Connector.getConector().getAsList(LineaFactura.class,"LineaFactura/&carro="+idCarro);
+        lineasCarrito = Connector.getConector().getAsList(LineaFactura.class,"lineaFactura/&carro="+idCarro);
         for (LineaFactura linea : lineasCarrito){
-            contenidoCarro.add(Connector.getConector().get(Contenido.class,"lineaFactura/"+linea.getId()));
+            contenidoCarro.add(Connector.getConector().get(Corto.class,"lineaFactura/"+linea.getId()));
         }
     }
 

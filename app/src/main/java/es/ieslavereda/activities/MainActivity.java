@@ -66,7 +66,7 @@ public class MainActivity extends BaseActivity implements CallInterface {
 
         reiniciarContrasenya.setOnClickListener(view -> {
             Intent intent = new Intent(this, ReiniciarContrasenyaActivity.class);
-            resultLauncher.launch(intent);
+            startActivity(intent);
         });
 
         iniciarSesion.setOnClickListener(view -> {
@@ -91,10 +91,6 @@ public class MainActivity extends BaseActivity implements CallInterface {
            }
         });
 
-        reiniciarContrasenya.setOnClickListener(view -> {
-            reiniciarContrasenyaFunction(view);
-        });
-
     }
 
     /**
@@ -109,24 +105,6 @@ public class MainActivity extends BaseActivity implements CallInterface {
      */
     @Override
     public void doInUI() {
-    }
-
-
-    /**
-     * Inicia una actividad para cambiar la contraseña del usuario introducido si existe.
-     *
-     * @param view La vista que ha sido clicada para iniciar la actividad.
-     */
-    public void reiniciarContrasenyaFunction(View view) {
-        Intent intent = new Intent(this, ReiniciarContrasenyaActivity.class);
-        ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (result.getResultCode() == RESULT_OK) {
-                Toast.makeText(this, "Cambio de contraseña realizado con exito", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Cambio de contraseña cancelado", Toast.LENGTH_SHORT).show();
-            }
-        });
-        resultLauncher.launch(intent);
     }
 
 }

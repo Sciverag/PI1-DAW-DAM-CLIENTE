@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,6 +50,8 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
     private List<Capitulo> capitulos;
     private int id;
     private float precioContenido;
+    private String tag_usuario;
+    private CarroCompra carroCompra;
 
     /**
      * Llamado cuando la actividad es creada por primera vez. Aquí es donde debes hacer toda la configuración
@@ -62,6 +65,7 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contenido_ampliado);
+        tag_usuario = getIntent().getExtras().getString("tag_usuario");
         titulo = findViewById(R.id.textViewTituloCompleto);
         descripcion = findViewById(R.id.textViewDescripcionCompleto);
         fecha = findViewById(R.id.textViewFechaCompleto);
@@ -80,7 +84,24 @@ public class ContenidoAmpliadoActivity extends BaseActivity implements CallInter
 
         volver.setOnClickListener(view -> finish());
         anyadirCarrito.setOnClickListener(view -> {
-            Connector.getConector().post(CarroCompra.class, null, "carro/&user=tag&idCont="+id);
+            executeCall(new CallInterface() {
+                @Override
+                public void doInBackground() {
+                    carroCompra = Connector.getConector().post(CarroCompra.class, new CarroCompra(0,""), "carro/addLinea/&user="+ tag_usuario + "&idCont="+id);
+
+                }
+
+                @Override
+                public void doInUI() {
+                    if (carroCompra!= null){
+                        anyadirCarrito.setVisibility(View.INVISIBLE);
+                        Toast.makeText(getBaseContext(), "Producto añadido al carro", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getBaseContext(), "Producto no añadido", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
         });
     }
 

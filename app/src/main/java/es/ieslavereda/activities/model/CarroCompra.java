@@ -12,7 +12,7 @@ public class CarroCompra {
     /**
      * El ID del usuario al que pertenece el carro de compra.
      */
-    private int idUsuario;
+    private String idUsuario;
 
     /**
      * Constructor de la clase CarroCompra.
@@ -20,7 +20,7 @@ public class CarroCompra {
      * @param id El ID del carro de compra.
      * @param idUsuario El ID del usuario al que pertenece el carro de compra.
      */
-    public CarroCompra(int id, int idUsuario) {
+    public CarroCompra(int id, String idUsuario) {
         this.id = id;
         this.idUsuario = idUsuario;
     }
@@ -39,7 +39,7 @@ public class CarroCompra {
      *
      * @return El ID del usuario al que pertenece el carro de compra.
      */
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
@@ -57,7 +57,7 @@ public class CarroCompra {
      *
      * @param idUsuario El ID del usuario al que pertenece el carro de compra.
      */
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
     }
 

@@ -109,7 +109,7 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
                                     id = contenidoPasar.getId();
                                     intent.putExtra("id", id);
                                     intent.putExtra("tipo", tipo);
-
+                                    intent.putExtra("tag_usuario", tagUsuario);
                                     startActivity(intent);
                                 });
                             } else {
@@ -128,6 +128,7 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
                                     id = contenidoPasar.getId();
                                     intent.putExtra("id", id);
                                     intent.putExtra("tipo", tipo);
+                                    intent.putExtra("tag_usuario", tagUsuario);
                                     startActivity(intent);
                                 });
                             }
@@ -228,6 +229,7 @@ public class ContenidoActivity extends BaseActivity implements CallInterface, Vi
         }
         intent.putExtra("id", id);
         intent.putExtra("tipo", tipo);
+        intent.putExtra("tag_usuario", tagUsuario);
         startActivity(intent);
     }
 }
